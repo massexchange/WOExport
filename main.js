@@ -54,6 +54,27 @@ var getWeekString = (flightDate) => {
     return weekString;
 };
 
+var getQuarter = (flightDate) => {
+    var date = moment.utc(flightDate);
+    const QUARTER_ONE_START = moment.utc("2016-12-26");
+    const QUARTER_ONE_END = moment.utc("2017-03-26");
+    const QUARTER_TWO_START = moment.utc("2017-03-27");
+    const QUARTER_TWO_END = moment.utc("2017-06-25");
+    const QUARTER_THREE_START = moment.utc("2017-06-26");
+    const QUARTER_THREE_END = moment.utc("2017-09-24");
+    const QUARTER_FOUR_START = moment.utc("2017-09-25");
+    const QUARTER_FOUR_END = moment.utc("2017-12-24");
+
+    if(date.isBetween(QUARTER_ONE_START, QUARTER_ONE_END) || date.isSame(QUARTER_ONE_START || date.isSame(QUARTER_ONE_END)))
+        return {start: QUARTER_ONE_START, end: QUARTER_ONE_END};
+    else if(date.isBetween(QUARTER_TWO_START, QUARTER_TWO_END) || date.isSame(QUARTER_TWO_START || date.isSame(QUARTER_TWO_END)))
+        return {start: QUARTER_TWO_START, end: QUARTER_TWO_END};
+    else if(date.isBetween(QUARTER_THREE_START, QUARTER_THREE_END) || date.isSame(QUARTER_THREE_START || date.isSame(QUARTER_THREE_END)))
+        return {start: QUARTER_THREE_START, end: QUARTER_THREE_END};
+    else if(date.isBetween(QUARTER_FOUR_START, QUARTER_FOUR_END) || date.isSame(QUARTER_FOUR_START || date.isSame(QUARTER_FOUR_END)))
+        return {start: QUARTER_FOUR_START, end: QUARTER_FOUR_END};
+};
+
 var getMatches = () => {
     var options = {
         url: "http://localhost/api/match/export/14",
@@ -82,6 +103,12 @@ var processResponse = (resp) => {
         extras.dayPart = data.match.buy.selectedAttrs.attributes.find((attr) => attr.type.name == "Daypart");
         extras.firstMonday = moment(data.match.buy.flightDate).weekday(1).format("MM/DD/YYYY");
 
+        var quarter = getQuarter(data.match.buy.flightDate);
+        quarter.start = quarter.start.format("MM/DD/YYYY");
+        quarter.end = quarter.end.format("MM/DD/YYYY");
+
+        extras.quarter = quarter;
+        
         data.extras = extras;
 
         resolve(data);
@@ -137,8 +164,8 @@ var buildXML = (data, agencyMap) => {
 
     var quarters = root.ele("Quarters")
         .ele("Quarter")
-        .ele("Start", data.campaign.flightStartDate).up()
-        .ele("End", data.campaign.flightEndDate).up()
+        .ele("Start", data.extras.quarter.start).up()
+        .ele("End", data.extras.quarter.end).up()
         .ele("Line")
         .ele("SellingName", getSellingName(data.extras.dayPart.value)).up()
         .ele("InventoryDesc", getSellingName(data.extras.dayPart.value)).up()
