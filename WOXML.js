@@ -135,7 +135,7 @@ module.exports = class WOXML {
             .ele("UnitCount", this.data.match.amount).up()
             .ele("Weekdays", util.getWeekString(this.data.match.buy.flightDate)).up()
             .ele("RestrictStart", this.data.extras.restrictions.start).up()
-            .ele("RestructEnd", this.data.extras.restrictions.end);
+            .ele("RestrictEnd", this.data.extras.restrictions.end);
 
         return this;
     }
