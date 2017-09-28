@@ -42,15 +42,29 @@ exports.getWeekString = (flightDate) => {
 };
 
 exports.getQuarter = (flightDate) => {
+    /*  2017 Example
+        const QUARTER_ONE_START = moment.utc("2017-01-01");
+        const QUARTER_ONE_END = moment.utc("2017-03-26");
+        const QUARTER_TWO_START = moment.utc("2017-03-27");
+        const QUARTER_TWO_END = moment.utc("2017-06-25");
+        const QUARTER_THREE_START = moment.utc("2017-06-26");
+        const QUARTER_THREE_END = moment.utc("2017-09-24");
+        const QUARTER_FOUR_START = moment.utc("2017-09-25");
+        const QUARTER_FOUR_END = moment.utc("2017-12-31");
+    */
+
     var date = moment.utc(flightDate);
-    const QUARTER_ONE_START = moment.utc("2017-01-01");
-    const QUARTER_ONE_END = moment.utc("2017-03-26");
-    const QUARTER_TWO_START = moment.utc("2017-03-27");
-    const QUARTER_TWO_END = moment.utc("2017-06-25");
-    const QUARTER_THREE_START = moment.utc("2017-06-26");
-    const QUARTER_THREE_END = moment.utc("2017-09-24");
-    const QUARTER_FOUR_START = moment.utc("2017-09-25");
-    const QUARTER_FOUR_END = moment.utc("2017-12-31");
+    const QUARTER_ONE_START = date.startOf("year");
+    const QUARTER_ONE_END = QUARTER_ONE_START.clone().add(2, "months").endOf("month").startOf("isoweek").subtract(1, "days"); //Last Sunday of the month
+
+    const QUARTER_TWO_START = QUARTER_ONE_END.clone().add(1, "days"); //Last monday of the 3rd month
+    const QUARTER_TWO_END = QUARTER_TWO_START.clone().startOf("month").add(3, "months").endOf("month").startOf("isoweek").subtract(1, "days");
+
+    const QUARTER_THREE_START = QUARTER_TWO_END.clone().add(1, "days");
+    const QUARTER_THREE_END = QUARTER_THREE_START.clone().startOf("month").add(3, "months").endOf("month").startOf("isoweek").subtract(1, "days");
+
+    const QUARTER_FOUR_START = QUARTER_THREE_END.clone().add(1, "days");
+    const QUARTER_FOUR_END = QUARTER_FOUR_START.clone().endOf("year");
 
     if(date.isBetween(QUARTER_ONE_START, QUARTER_ONE_END) || date.isSame(QUARTER_ONE_START || date.isSame(QUARTER_ONE_END)))
         return {start: QUARTER_ONE_START, end: QUARTER_ONE_END};

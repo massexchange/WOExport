@@ -14,7 +14,17 @@ if(args.length < 1)
     process.exit(1);
 }
 const AUTH_TOKEN = args[0];
-var writer = builder.streamWriter(fs.createWriteStream("match14_test_export.xml"));
+var writer = builder.streamWriter(fs.createWriteStream("match_test_export.xml"));
+
+
+process.on(
+    "unhandledRejection",
+    function handleWarning( reason, promise ) {
+
+        console.log( reason );
+
+    }
+);
 
 var getMatches = () => {
     var options = {
