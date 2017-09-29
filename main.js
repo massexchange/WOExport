@@ -56,16 +56,24 @@ var processResponse = (resp) => {
     extras.adSize = data.match.buy.selectedAttrs.attributes.find((attr) => attr.type.name == "AdSize");
     extras.dayPart = data.match.buy.selectedAttrs.attributes.find((attr) => attr.type.name == "Daypart");
     extras.firstMonday = moment(data.match.buy.flightDate).weekday(1).format("MM/DD/YYYY");
+    extras.headerTotalAmount = util.roundToTwoDecimals(data.match.amount * data.match.matchedAparPrice);
+    extras.dealYear = util.getDealYear(data.match.buy.flightDate);
+    extras.guaranteesTotalAmount = util.roundToTwoDecimals(data.match.matchedAparPrice);
+    extras.sellingName = util.getSellingName(data.extras.dayPart.value);
+    extras.rate = util.roundToTwoDecimals(data.match.buy.aparPrice);
+    extras.weekdays = util.getWeekString(data.match.buy.flightDate);
 
+    //Quarter
     var quarter = util.getQuarter(data.match.buy.flightDate);
     quarter.start = quarter.start.format("MM/DD/YYYY");
     quarter.end = quarter.end.format("MM/DD/YYYY");
 
+    extras.quarter = quarter;
+
+    //Restrictions
     //For now just use daypart
     var dayPart = data.match.buy.selectedAttrs.attributes.find((attr) => attr.type.name == "Daypart");
     var restrictions = util.getRestrictions(dayPart);
-
-    extras.quarter = quarter;
     extras.restrictions = restrictions;
     
     data.extras = extras;
