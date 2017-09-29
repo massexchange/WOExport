@@ -4,31 +4,35 @@ var request = require("request");
 var BigNumber = require("bignumber.js");
 var moment = require("moment");
 var util = require("./util");
+var cmdArgs = require("command-line-args");
 var WOXML = require("./WOXML");
 var AMCExcel = require("./AMCExcelProcessor");
 
-var args = process.argv.slice(2);
-if(args.length < 1)
+const argDefs = [
+    { name: "auth", alias: "a", type: String },
+    { name: "match", alias: "m", type: Number }
+];
+const options = cmdArgs(argDefs);
+
+if(!options.auth)
 {
     console.log("Please enter an auth token");
     process.exit(1);
 }
-const AUTH_TOKEN = args[0];
-var writer = builder.streamWriter(fs.createWriteStream("match_test_export.xml"));
+if(!options.match)
+{
+    console.log("Please enter a Match id to export");
+    process.exit(1);   
+}
+const AUTH_TOKEN = options.auth;
+const MATCH_ID = options.match;
+var writer = builder.streamWriter(fs.createWriteStream(`match_${MATCH_ID}.xml`));
 
-
-process.on(
-    "unhandledRejection",
-    function handleWarning( reason, promise ) {
-
-        console.log( reason );
-
-    }
-);
+process.on("unhandledRejection", (reason, promise) => console.log(reason));
 
 var getMatches = () => {
     var options = {
-        url: "http://localhost/api/match/export/14",
+        url: `http://localhost/api/match/export/${MATCH_ID}`,
         headers: {
             "X-Auth-Token": AUTH_TOKEN
         }
@@ -48,7 +52,7 @@ var processResponse = (resp) => {
     data.campaign.flightStartDate = moment(data.campaign.flightStartDate).format("MM/DD/YYYY");
     data.campaign.flightEndDate = moment(data.campaign.flightEndDate).format("MM/DD/YYYY");
 
-    var extras = {}
+    var extras = {};
     extras.adSize = data.match.buy.selectedAttrs.attributes.find((attr) => attr.type.name == "AdSize");
     extras.dayPart = data.match.buy.selectedAttrs.attributes.find((attr) => attr.type.name == "Daypart");
     extras.firstMonday = moment(data.match.buy.flightDate).weekday(1).format("MM/DD/YYYY");
