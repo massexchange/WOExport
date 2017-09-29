@@ -54,7 +54,7 @@ exports.getQuarter = (flightDate) => {
     */
 
     var date = moment.utc(flightDate);
-    const QUARTER_ONE_START = date.startOf("year");
+    const QUARTER_ONE_START = date.clone().startOf("year");
     const QUARTER_ONE_END = QUARTER_ONE_START.clone().add(2, "months").endOf("month").startOf("isoweek").subtract(1, "days"); //Last Sunday of the month
 
     const QUARTER_TWO_START = QUARTER_ONE_END.clone().add(1, "days"); //Last monday of the 3rd month
@@ -66,13 +66,13 @@ exports.getQuarter = (flightDate) => {
     const QUARTER_FOUR_START = QUARTER_THREE_END.clone().add(1, "days");
     const QUARTER_FOUR_END = QUARTER_FOUR_START.clone().endOf("year");
 
-    if(date.isBetween(QUARTER_ONE_START, QUARTER_ONE_END) || date.isSame(QUARTER_ONE_START || date.isSame(QUARTER_ONE_END)))
+    if(date.isBetween(QUARTER_ONE_START, QUARTER_ONE_END) || date.isSame(QUARTER_ONE_START) || date.isSame(QUARTER_ONE_END))
         return {start: QUARTER_ONE_START, end: QUARTER_ONE_END};
-    else if(date.isBetween(QUARTER_TWO_START, QUARTER_TWO_END) || date.isSame(QUARTER_TWO_START || date.isSame(QUARTER_TWO_END)))
+    else if(date.isBetween(QUARTER_TWO_START, QUARTER_TWO_END) || date.isSame(QUARTER_TWO_START) || date.isSame(QUARTER_TWO_END))
         return {start: QUARTER_TWO_START, end: QUARTER_TWO_END};
-    else if(date.isBetween(QUARTER_THREE_START, QUARTER_THREE_END) || date.isSame(QUARTER_THREE_START || date.isSame(QUARTER_THREE_END)))
+    else if(date.isBetween(QUARTER_THREE_START, QUARTER_THREE_END) || date.isSame(QUARTER_THREE_START) || date.isSame(QUARTER_THREE_END))
         return {start: QUARTER_THREE_START, end: QUARTER_THREE_END};
-    else if(date.isBetween(QUARTER_FOUR_START, QUARTER_FOUR_END) || date.isSame(QUARTER_FOUR_START || date.isSame(QUARTER_FOUR_END)))
+    else if(date.isBetween(QUARTER_FOUR_START, QUARTER_FOUR_END) || date.isSame(QUARTER_FOUR_START) || date.isSame(QUARTER_FOUR_END))
         return {start: QUARTER_FOUR_START, end: QUARTER_FOUR_END};
 };
 

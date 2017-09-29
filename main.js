@@ -59,7 +59,7 @@ var processResponse = (resp) => {
     extras.headerTotalAmount = util.roundToTwoDecimals(data.match.amount * data.match.matchedAparPrice);
     extras.dealYear = util.getDealYear(data.match.buy.flightDate);
     extras.guaranteesTotalAmount = util.roundToTwoDecimals(data.match.matchedAparPrice);
-    extras.sellingName = util.getSellingName(data.extras.dayPart.value);
+    extras.sellingName = util.getSellingName(extras.dayPart.value);
     extras.rate = util.roundToTwoDecimals(data.match.buy.aparPrice);
     extras.weekdays = util.getWeekString(data.match.buy.flightDate);
 
