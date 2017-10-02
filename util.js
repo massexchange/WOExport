@@ -13,13 +13,11 @@ exports.getSellingName = (dayPart) => {
 };
 
 exports.getDealYear = (flightDate) => {
-    const DEAL_YEAR = {
-        "2017": "2017-2018",
-        "2018": "2018-2019",
-        "2019": "2019-2020"
-    };
+    var date = moment(flightDate);
+    var dateYear = date.year();
+    var nextYear = date.add(1, "year").year();
 
-    return DEAL_YEAR[moment(flightDate).year()];
+    return `${dateYear}-${nextYear}`;
 };
 
 exports.getWeekString = (flightDate) => {
