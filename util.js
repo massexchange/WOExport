@@ -58,10 +58,10 @@ exports.getQuarter = (flightDate) => {
     const QUARTER_ONE_END = QUARTER_ONE_START.clone().add(2, "months").endOf("month").startOf("isoweek").subtract(1, "days"); //Last Sunday of the month
 
     const QUARTER_TWO_START = QUARTER_ONE_END.clone().add(1, "days"); //Last monday of the 3rd month
-    const QUARTER_TWO_END = QUARTER_TWO_START.clone().startOf("month").add(3, "months").endOf("month").startOf("isoweek").subtract(1, "days");
+    const QUARTER_TWO_END = QUARTER_TWO_START.clone().add(3, "months").endOf("month").startOf("isoweek").subtract(1, "days");
 
     const QUARTER_THREE_START = QUARTER_TWO_END.clone().add(1, "days");
-    const QUARTER_THREE_END = QUARTER_THREE_START.clone().startOf("month").add(3, "months").endOf("month").startOf("isoweek").subtract(1, "days");
+    const QUARTER_THREE_END = QUARTER_THREE_START.clone().add(3, "months").endOf("month").startOf("isoweek").subtract(1, "days");
 
     const QUARTER_FOUR_START = QUARTER_THREE_END.clone().add(1, "days");
     const QUARTER_FOUR_END = QUARTER_FOUR_START.clone().endOf("year");
