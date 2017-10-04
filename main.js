@@ -71,9 +71,10 @@ var processResponse = (resp) => {
     extras.quarter = quarter;
 
     //Restrictions
-    //For now just use daypart
+    //Use hour attribute. If not exist, use daypart. If not exist, use 24 hours.
+    var hour = data.match.buy.selectedAttrs.attributes.find((attr) => attr.type.name == "Hour");
     var dayPart = data.match.buy.selectedAttrs.attributes.find((attr) => attr.type.name == "Daypart");
-    var restrictions = util.getRestrictions(dayPart);
+    var restrictions = util.getRestrictions({hour: hour, dayPart: dayPart});
     extras.restrictions = restrictions;
     
     data.extras = extras;

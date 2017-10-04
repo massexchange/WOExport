@@ -77,25 +77,32 @@ exports.getQuarter = (flightDate) => {
 exports.roundToTwoDecimals = (number) => parseInt(number).toFixed(2);
 
 //in milliseconds
-exports.getRestrictions = (dayPart) => {
-    if(dayPart.value == "Daytime")  //Hours 6-14
-    {
-        return { start: 21600000, end: 50400000};
-    }
-    else if(dayPart.value == "Early Fringe") //Hours 14-17
-    {
-        return { start: 50400000, end: 61200000};
-    }
-    else if(dayPart.value == "Prime") //Hours 18-24
-    {
-        return { start: 64800000, end: 86400000};
-    }
-    else if(dayPart.value == "Late Night") //Hours 1-5
-    {
-        return { start: 3600000, end: 18000000};
-    }
-    else if(dayPart.value == "Weekend") //Hours 6-17 
-    {
-        return { start: 21600000, end: 61200000};
-    }
+exports.getRestrictions = (restrictions) => {
+    var getDaypartRestrictions = (dayPart) => {
+        if(dayPart.value == "Daytime")  //Hours 6-14
+            return { start: 21600000, end: 50400000};
+        else if(dayPart.value == "Early Fringe") //Hours 14-17
+            return { start: 50400000, end: 61200000};
+        else if(dayPart.value == "Prime") //Hours 18-24
+            return { start: 64800000, end: 86400000};
+        else if(dayPart.value == "Late Night") //Hours 1-5
+            return { start: 3600000, end: 18000000};
+        else if(dayPart.value == "Weekend") //Hours 6-17 
+            return { start: 21600000, end: 61200000};
+    };
+    
+    const MILLIS_IN_HOUR = 3600000;
+    var getHourRestrictions = (hour) => {
+        var start = hour.value * MILLIS_IN_HOUR;
+        var end = start + MILLIS_IN_HOUR;
+
+        return { start: start, end: end };
+    };
+
+    if(restrictions.hour)
+        return getHourRestrictions(restrictions.hour);
+    else if(restrictions.dayPart)
+        return getDaypartRestrictions(restrictions.dayPart);
+    else
+        return { start: 0, end: 24 * MILLIS_IN_HOUR };
 };
