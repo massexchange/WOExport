@@ -5,6 +5,7 @@ var BigNumber = require("bignumber.js");
 var moment = require("moment");
 var util = require("./util");
 var cmdArgs = require("command-line-args");
+var JSOG = require("jsog");
 var WOXML = require("./WOXML");
 var AMCExcel = require("./AMCExcelProcessor");
 
@@ -48,13 +49,19 @@ var getMatches = () => {
 };
 
 var processResponse = (resp) => {
-    var data = JSON.parse(resp);
+    var data = JSOG.parse(resp);
     data.campaign.flightStartDate = moment(data.campaign.flightStartDate).format("MM/DD/YYYY");
     data.campaign.flightEndDate = moment(data.campaign.flightEndDate).format("MM/DD/YYYY");
 
+    var inventoryAttrs = data.match.sell.catRec.inventory.instrument.attributes;
+    console.log(inventoryAttrs)
+    var adSize = inventoryAttrs.find((attr) => attr.type.name == "AdSize");
+    var dayPart = inventoryAttrs.find((attr) => attr.type.name == "Daypart");
+    var hour = inventoryAttrs.find((attr) => attr.type.name == "Hour");
+
     var extras = {};
-    extras.adSize = data.match.buy.selectedAttrs.attributes.find((attr) => attr.type.name == "AdSize");
-    extras.dayPart = data.match.buy.selectedAttrs.attributes.find((attr) => attr.type.name == "Daypart");
+    extras.adSize = adSize;
+    extras.dayPart = dayPart;
     extras.firstMonday = moment(data.match.buy.flightDate).weekday(1).format("MM/DD/YYYY");
     extras.headerTotalAmount = util.roundToTwoDecimals(data.match.amount * data.match.matchedAparPrice);
     extras.dealYear = util.getDealYear(data.match.buy.flightDate);
@@ -72,8 +79,6 @@ var processResponse = (resp) => {
 
     //Restrictions
     //Use hour attribute. If not exist, use daypart. If not exist, use 24 hours.
-    var hour = data.match.buy.selectedAttrs.attributes.find((attr) => attr.type.name == "Hour");
-    var dayPart = data.match.buy.selectedAttrs.attributes.find((attr) => attr.type.name == "Daypart");
     var restrictions = util.getRestrictions({hour: hour, dayPart: dayPart});
     extras.restrictions = restrictions;
     
