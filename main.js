@@ -1,7 +1,6 @@
 var fs = require("fs");
 var builder = require("xmlbuilder");
 var request = require("request");
-var BigNumber = require("bignumber.js");
 var moment = require("moment");
 var util = require("./util");
 var cmdArgs = require("command-line-args");
@@ -66,7 +65,6 @@ var processResponse = (resp) => {
 
     var extras = {};
     extras.adSize = adSize;
-    extras.dayPart = dayPart;
     extras.firstMonday = moment(data.match.buy.flightDate).weekday(1).format("MM/DD/YYYY");
     extras.headerTotalAmount = util.roundToTwoDecimals(data.match.amount * data.match.matchedAparPrice);
     extras.dealYear = util.getDealYear(data.match.buy.flightDate);
