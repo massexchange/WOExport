@@ -53,11 +53,16 @@ var processResponse = (resp) => {
     data.campaign.flightStartDate = moment(data.campaign.flightStartDate).format("MM/DD/YYYY");
     data.campaign.flightEndDate = moment(data.campaign.flightEndDate).format("MM/DD/YYYY");
 
+    var sellShardAttrs = data.match.sell.catRec.shard.inst.attributes;
+    var hiddenAttrs = data.match.sell.catRec.shard.hiddenAttrIds;
+    sellShardAttrs = sellShardAttrs.filter((attr) => !hiddenAttrs.includes(attr.id));
+    var adSize = sellShardAttrs.find((attr) => attr.type.name == "AdSize");
+    var dayPart = sellShardAttrs.find((attr) => attr.type.name == "Daypart");
+    var hour = sellShardAttrs.find((attr) => attr.type.name == "Hour");
+
+    //Selling Name needs the Daypart, which may have been ambiguated away
     var inventoryAttrs = data.match.sell.catRec.inventory.instrument.attributes;
-    console.log(inventoryAttrs)
-    var adSize = inventoryAttrs.find((attr) => attr.type.name == "AdSize");
-    var dayPart = inventoryAttrs.find((attr) => attr.type.name == "Daypart");
-    var hour = inventoryAttrs.find((attr) => attr.type.name == "Hour");
+    var unambiguatedDayPart = inventoryAttrs = inventoryAttrs.find((attr) => attr.type.name == "Daypart");
 
     var extras = {};
     extras.adSize = adSize;
@@ -66,7 +71,7 @@ var processResponse = (resp) => {
     extras.headerTotalAmount = util.roundToTwoDecimals(data.match.amount * data.match.matchedAparPrice);
     extras.dealYear = util.getDealYear(data.match.buy.flightDate);
     extras.guaranteesTotalAmount = util.roundToTwoDecimals(data.match.matchedAparPrice);
-    extras.sellingName = util.getSellingName(extras.dayPart.value);
+    extras.sellingName = util.getSellingName(unambiguatedDayPart.value);
     extras.rate = util.roundToTwoDecimals(data.match.buy.aparPrice);
     extras.weekdays = util.getWeekString(data.match.buy.flightDate);
 
