@@ -61,7 +61,7 @@ var processResponse = (resp) => {
 
     //Selling Name needs the Daypart, which may have been ambiguated away
     var inventoryAttrs = data.match.sell.catRec.inventory.instrument.attributes;
-    var unambiguatedDayPart = inventoryAttrs = inventoryAttrs.find((attr) => attr.type.name == "Daypart");
+    var unambiguatedDayPart = inventoryAttrs.find((attr) => attr.type.name == "Daypart");
 
     var extras = {};
     extras.adSize = adSize;
