@@ -32,7 +32,7 @@ process.on("unhandledRejection", (reason, promise) => console.log(reason));
 
 var getMatches = () => {
     var options = {
-        url: `http://localhost/api/match/export/${MATCH_ID}`,
+        url: `http://localhost/api/match/${MATCH_ID}/export`,
         headers: {
             "X-Auth-Token": AUTH_TOKEN
         }
