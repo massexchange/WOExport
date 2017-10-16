@@ -9,7 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bignumber.js": "^4.0.2",
+    "command-line-args": "^4.0.7",
+    "jsog": "^1.0.7",
     "moment": "^2.18.1",
     "request": "^2.81.0",
     "xlsx": "^0.11.3",

@@ -19,7 +19,7 @@ module.exports = class WOXML {
             .ele("Property", "AMC").up() //Network?
             .ele("DealStatusIncomplete", "Planning Costs").up() //blind copy from example
             .ele("DealStatusWorking", "Working").up()           //blind copy from example
-            .ele("TotalAmount", util.roundToTwoDecimals(this.data.match.amount * this.data.match.matchedAparPrice)).up()
+            .ele("TotalAmount", this.data.extras.headerTotalAmount).up()
             .ele("TotalEQUnits", this.data.extras.adSize.value / 30).up() //Equiv 30s
             .ele("TotalImps", 0).up();
 
@@ -27,7 +27,7 @@ module.exports = class WOXML {
             .ele("Name", this.data.campaign.name).up()
             .ele("Advertiser", "!PLACEHOLDER!").up()
             .ele("DealType", "MassEx").up()
-            .ele("DealYear", util.getDealYear(this.data.match.buy.flightDate)).up()
+            .ele("DealYear", this.data.extras.dealYear).up()
             .ele("Transaction", "Cash").up()    //blind copy from example
             .ele("Marketplace", "Scatter").up() //blind copy from example
             .ele("RateCard", "AMC Mass Ex").up()
@@ -89,7 +89,7 @@ module.exports = class WOXML {
             .ele("Start", this.data.extras.quarter.start).up()
             .ele("End", this.data.extras.quarter.end).up()
             .ele("Imps", "0").up()
-            .ele("TotalAmount", util.roundToTwoDecimals(this.data.match.matchedAparPrice)).up()
+            .ele("TotalAmount", this.data.extras.guaranteesTotalAmount).up()
             .ele("HHImps", "0");
 
         return this;
@@ -107,8 +107,8 @@ module.exports = class WOXML {
             .ele("End", this.data.extras.quarter.end).up();
 
         var line = quarters.ele("Line")
-            .ele("SellingName", util.getSellingName(this.data.extras.dayPart.value)).up()
-            .ele("InventoryDesc", util.getSellingName(this.data.extras.dayPart.value)).up()
+            .ele("SellingName", this.data.extras.sellingName).up()
+            .ele("InventoryDesc", this.data.extras.sellingName).up()
             .ele("Start", this.data.campaign.flightStartDate).up()
             .ele("End", this.data.campaign.flightEndDate).up()
             .ele("RateCard", "AMC Mass Ex").up() //Assuming "Ratecard" tab of AMC Master List
@@ -117,8 +117,8 @@ module.exports = class WOXML {
             .ele("SellingElement", "ME - MassEX").up()
             .ele("BreakCode", "National").up()
             .ele("Length", this.data.extras.adSize.value * 1000).up()
-            .ele("Rate", util.roundToTwoDecimals(this.data.match.buy.aparPrice)).up()
-            .ele("Weekdays", util.getWeekString(this.data.match.buy.flightDate)).up()
+            .ele("Rate", this.data.extras.rate).up()
+            .ele("Weekdays", this.data.extras.weekdays).up()
             .ele("UnitCount", this.data.match.amount).up();
 
         var lineEstimates = line.ele("Estimates")
@@ -133,7 +133,7 @@ module.exports = class WOXML {
             .ele("Start", this.data.extras.firstMonday).up()
             //.ele("AdvertiserBrand", "WORK IN PROGRESS. CAMPAIGN'S UPCOMING 'BRAND' FIELD").up()
             .ele("UnitCount", this.data.match.amount).up()
-            .ele("Weekdays", util.getWeekString(this.data.match.buy.flightDate)).up()
+            .ele("Weekdays", this.data.extras.weekdays).up()
             .ele("RestrictStart", this.data.extras.restrictions.start).up()
             .ele("RestrictEnd", this.data.extras.restrictions.end);
 
