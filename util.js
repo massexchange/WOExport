@@ -1,17 +1,5 @@
 var moment = require("moment");
 
-exports.getSellingName = (dayPart) => {
-    const SELLING_NAME = {
-        "Daytime": "Cool Days With AMC",
-        "Early Fringe": "Afternoons With AMC",
-        "Prime": "Primetime on AMC",
-        "Late Night": "Late Night at the Movies",
-        "Weekend": "Weekends Away On AMC"
-    };
-
-    return SELLING_NAME[dayPart];
-};
-
 exports.getDealYear = (flightDate) => {
     var date = moment(flightDate);
     var dateYear = date.year();
