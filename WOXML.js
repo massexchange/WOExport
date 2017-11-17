@@ -25,12 +25,12 @@ module.exports = class WOXML {
 
         var headerAdvertiser = header.ele("Advertiser")
             .ele("Name", this.data.campaign.name).up()
-            .ele("Advertiser", "!PLACEHOLDER!").up()
+            .ele("Advertiser", this.data.extras.advertiser ? this.data.extras.advertiser : "!PLACEHOLDER!").up()
             .ele("DealType", "MassEx").up()
             .ele("DealYear", this.data.extras.dealYear).up()
             .ele("Transaction", "Cash").up()    //blind copy from example
             .ele("Marketplace", "Scatter").up() //blind copy from example
-            .ele("RateCard", "AMC Mass Ex").up()
+            .ele("RateCard", this.data.extras.rateCard).up() //Example: AMC Mass Ex
             .ele("RatingStream", "C3").up()     //blind copy from example
 
         var headerAdvertiserDemos = headerAdvertiser.ele("Demos")
@@ -108,7 +108,7 @@ module.exports = class WOXML {
 
         var line = quarters.ele("Line")
             .ele("SellingName", this.data.extras.sellingName).up()
-            .ele("InventoryDesc", this.data.extras.sellingName).up()
+            .ele("InventoryDesc", this.data.extras.inventoryDesc).up()
             .ele("Start", this.data.campaign.flightStartDate).up()
             .ele("End", this.data.campaign.flightEndDate).up()
             .ele("RateCard", "AMC Mass Ex").up() //Assuming "Ratecard" tab of AMC Master List
