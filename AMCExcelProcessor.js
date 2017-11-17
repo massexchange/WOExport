@@ -2,7 +2,7 @@ var XLSX = require("xlsx");
 
 const MAX_COLS = 2;
 
-var sheetToArray = function(sheet){
+var sheetToArray = (sheet) => {
     var result = [];
     var row;
     var rowNum;

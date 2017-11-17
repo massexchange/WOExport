@@ -5,13 +5,14 @@ const moment = require("moment");
 const util = require("./util");
 const cmdArgs = require("command-line-args");
 const JSOG = require("jsog");
+const WOXMLData = require("./WOXMLData");
 const WOXML = require("./WOXML");
 const AMCExcel = require("./AMCExcelProcessor");
 const Networks = require("./networks");
 
 const argDefs = [
     { name: "auth", alias: "a", type: String },
-    { name: "match", alias: "m", type: Number },
+    { name: "match", alias: "m", type: String },
     { name: "advertiserName", alias: "n", type: String }
 ];
 const options = cmdArgs(argDefs);
@@ -23,21 +24,20 @@ if(!options.auth)
 }
 if(!options.match)
 {
-    console.log("Please enter a Match id to export");
+    console.log("Please enter Match id(s) to export");
     process.exit(1);   
 }
 if(!options.advertiserName)
     console.log("Advertiser not found. Defaulting to placeholder.");
 
 const AUTH_TOKEN = options.auth;
-const MATCH_ID = options.match;
-const writer = builder.streamWriter(fs.createWriteStream(`match_${MATCH_ID}.xml`));
+const MATCH_IDS = options.match.split(",");
 
 process.on("unhandledRejection", (reason, promise) => console.log(reason));
 
-const getMatches = () => {
+const getMatch = (id) => {
     const options = {
-        url: `http://localhost/api/match/${MATCH_ID}/export`,
+        url: `http://localhost/api/match/${id}/export`,
         headers: {
             "X-Auth-Token": AUTH_TOKEN
         }
@@ -50,6 +50,30 @@ const getMatches = () => {
                 resolve(body);
         }).on("error", (err) => console.log(err));
     });
+};
+
+const getMatches = (ids) => {
+    const matchPs = ids.map((id) => getMatch(id));
+
+    return Promise.all(matchPs);
+};
+
+//Aka groupByNetworkName
+const groupByProperty = (processedData) => {
+    const groupedData = {};
+
+    processedData.forEach((data) => {
+        const networkName = data.extras.networkName;
+        if(!groupedData[networkName])
+        {
+            groupedData[networkName] = [];
+            groupedData[networkName].push(data);
+        }
+        else
+            groupedData[networkName].push(data);
+    });
+
+    return groupedData;
 };
 
 const processResponse = (resp) => {
@@ -93,6 +117,7 @@ const processResponse = (resp) => {
     //Network (Property) mapping
     const networkName = sellShardAttrs.find((attr) => attr.type.name == "Network").value;
     const network = Networks[networkName];
+    extras.networkName = networkName;
     extras.sellingName = network.getSellingName(unambiguatedDayPart.value);
     extras.rateCard = network.rateCard;
     extras.inventoryDesc = network.inventoryDesc;
@@ -102,22 +127,59 @@ const processResponse = (resp) => {
     return data;
 };
 
-const buildXML = (data, agencyMap) => {
-    const wideOrbit = new WOXML(data, agencyMap);
+const combineGroups = (group, agencyMap) => {
+    const matchData = group.map((match) => new WOXMLData(match, agencyMap));
+    const base = matchData[0];
 
-    wideOrbit.buildHeader()
-        .buildFlights()
-        .buildGuarantees()
-        .buildTargets()
-        .buildQuarters();
+    //Combine data into one
+    for(let i = 1; i < matchData.length; i++)
+    {
+        let match = matchData[i];
+        base.Header.TotalAmount += match.Header.TotalAmount;
+        base.Header.TotalEQUnits += match.Header.TotalEQUnits;
+        base.Quarters.Line.UnitCount++;
 
-    return wideOrbit.getXML();
+        base.Guarantees.Guarantee.TotalAmount += match.Guarantees.Guarantee.TotalAmount
+
+        base.addWeekday(match.Quarters.Line.Weekdays);
+
+        base.Quarters.Weeks = base.Quarters.Weeks.concat(match.Quarters.Weeks);
+    }
+
+    base.Header.TotalAmount = base.Header.TotalAmount.toFixed(2);
+    base.Guarantees.Guarantee.TotalAmount = base.Guarantees.Guarantee.TotalAmount.toFixed(2);
+
+    return base;
 };
 
-getMatches()
-.then((response) => {
+getMatches(MATCH_IDS)
+.then((matches) => {
+    const agencyMap = AMCExcel.initAgencyMap();
+    const processedMatches = matches.map((match) => processResponse(match));
+    const groupedMatches = groupByProperty(processedMatches);
+
+    const combinedGroups = Object.keys(groupedMatches).map((key) => combineGroups(groupedMatches[key], agencyMap));
+
+    combinedGroups.forEach((group) => {
+        const writer = builder.streamWriter(fs.createWriteStream(`${group.Header.Property}_matches.xml`));
+        const wideOrbit = new WOXML(group, agencyMap);
+
+        wideOrbit.buildHeader()
+            .buildFlights()
+            .buildGuarantees()
+            .buildTargets()
+            .buildQuarters();
+
+        const xml = wideOrbit.getXML();
+        xml.end(writer);
+    });
+
+
+
+    /*
     const data = processResponse(response);
     const xml = buildXML(data, AMCExcel.initAgencyMap());
     //console.log(xml);
     xml.end(writer);
+    */
 });
