@@ -1,0 +1,20 @@
+<ul>
+    {#.}
+        {^children}
+            <li data-name="{name}">
+                <a href="{name}">{description}</a>
+            </li>
+        {:else}
+            <li>
+                <a href="#">{description}</a>
+                <ul>
+                    {#children}
+                        <li data-name="{name}">
+                            <a href="/{name}">{description}</a>
+                        </li>
+                    {/children}
+                </ul>
+            </li>
+        {/children}
+    {/.}
+</ul>

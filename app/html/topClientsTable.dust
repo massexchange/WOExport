@@ -1,0 +1,22 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Client</th>
+            <th>MTD Revenue</th>
+            <th>Change in Total Price</th>
+            <th>Average Price</th>
+            <th>Change in Average Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        {#advertisers}
+            <tr>
+                <td>Agency: {name}</td>
+                <td>{monthRevenue}</td>
+                <td>{monthlyPriceChange}</td>
+                <td>{averagePrice}</td>
+                <td>{averagePriceChange}</td>
+            </tr>
+        {/advertisers}
+    </tbody>
+</table>

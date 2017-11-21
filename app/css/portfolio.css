@@ -1,0 +1,52 @@
+#portfolioFilters {
+	width: 25%;
+	position: fixed;
+	overflow-y: auto;
+	min-width: 237px;
+	max-width: 325px;
+}
+
+#portfolioFilters label {
+	margin: 0.7em 0px 1em 0px;
+}
+
+#portfolioFilters right {
+	width: 66%;
+}
+
+#portfolioResults { 
+	width: 70%;
+}
+
+#campLabel {
+	display: block;
+}
+
+#dropdowns {
+	padding: 10px 10px 0 10px;
+	background: #F4F4F4;
+}
+
+#campDropdown,
+#sbDropdown {
+	padding: 3px 3px 3px 3px;
+}
+
+.right select {
+	width: 165px;
+}
+
+#portfolioControls input {
+	width: 60%;
+	margin: 10px auto 0px auto;
+}
+
+#controls {
+    text-align: center;
+    width: 60%;
+    margin: auto;
+}
+
+#controls input{
+    display: inline-block;
+}

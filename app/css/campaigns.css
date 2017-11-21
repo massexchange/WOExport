@@ -1,0 +1,31 @@
+#newCampaign {
+	margin: 10px;
+}
+
+#campaigns th {
+	padding-bottom: 20px;
+}
+
+#campaigns td {
+	max-width: 150px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#createCamp {
+	float: right;
+}
+
+#msg {
+	text-align: center;
+}
+
+#inactiveBar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#inactiveButton {
+    margin-left: 10px;
+}

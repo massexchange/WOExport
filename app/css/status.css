@@ -1,0 +1,19 @@
+.status {
+    display: inline-block;
+}
+
+.status .value {
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.status .cancelTasks {
+    padding: 5px 6px 2px;
+    margin-bottom: 3px;
+    font-size: 11px;
+}
+
+.status h3 {
+    margin: 0;
+    text-transform: capitalize;
+}

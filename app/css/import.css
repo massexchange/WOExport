@@ -1,0 +1,12 @@
+.adminSection {
+    margin-top: 10px;
+}
+
+#fullPassCB {
+    display: inline;
+    margin-bottom: 10px;
+}
+
+#mpsDropdown select {
+    max-width: 250px;
+}

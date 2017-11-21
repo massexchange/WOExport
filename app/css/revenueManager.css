@@ -1,0 +1,10 @@
+#create {
+    margin-top: 10px;
+}
+
+#revertButton {
+	display:inline;
+    float:right;
+    margin-top: 28px;
+    margin-left: 10px;
+}

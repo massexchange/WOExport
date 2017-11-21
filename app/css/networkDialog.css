@@ -1,0 +1,22 @@
+#header {
+	display: inline-block;
+}
+
+#apply {
+	display: inline;
+}
+
+#netPrice,
+#netPriceLabel {
+	margin-left: 20px;
+}
+
+#netPrice input[type="number"] {
+	display: inline;
+	width: 150px;
+}
+
+.priceInput {
+	display: inline;
+	width: 200px !important;
+}

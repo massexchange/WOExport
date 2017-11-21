@@ -1,0 +1,58 @@
+<div id="title">
+    <h1>MARKET VIEW</h1>
+    <a href="#" id="help">
+        <i class="fa fa-question-circle fa-lg"></i>
+    </a>
+</div>
+<div id="marketViewer">
+    <div id="marketViewerFilterContainer" class="left sidebar">
+        <div id="marketViewerFilters">
+        </div>
+
+        <h3 id="typeTitle" class="hidden">View Market From</h3>
+        <div id="role" class="clearfix hidden">
+            <div class="right">
+                <input id="advertiser" type="radio" name="role" value="ADVERTISER" checked>
+                <label for="advertiser">Buyer's Perspective</label>
+            </div>
+
+            <div class="left">
+                <input id="publisher" type="radio" name="role" value="PUBLISHER">
+                <label for="publisher">Seller's Perspective</label>
+            </div>
+        </div>
+
+        <div id="marketViewerFilterControls">
+            <input id="find" type="submit" value="FIND" class="hidden"/>
+            <input id="reset" type="submit" value="RESET" class="hidden"/>
+        </div>
+    </div>
+
+    <div id="marketViewerResults" class="right">
+        <div id="msg"></div>
+        <div id="results" class="center hidden">
+            <div id="APAR" class="left priceTableContainer">
+                <h2>Ad Placement</h2>
+                <div class="bids left">
+                    <h3 class="listTitle">Bids</h3>
+                    <div id="APARBids"></div>
+                </div>
+                <div class="asks right">
+                    <h3 class="listTitle">Asks</h3>
+                    <div id="APARAsks"></div>
+                </div>
+            </div>
+            <div id="ASAR" class="right priceTableContainer">
+                <h2>Audience</h2>
+                <div class="bids left">
+                    <h3 class="listTitle">Bids</h3>
+                    <div id="ASARBids"></div>
+                </div>
+                <div class="bids right">
+                    <h3 class="listTitle">Asks</h3>
+                    <div id="ASARAsks"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

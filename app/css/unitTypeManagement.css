@@ -1,0 +1,13 @@
+#titleBar, #titleInfo{
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+}
+
+#titleInfo{
+	justify-content: flex-start;
+}
+
+#titleBar{
+	justify-content: space-between;
+}

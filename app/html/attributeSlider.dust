@@ -1,0 +1,7 @@
+<h3>{#inst.attributes}{.type.name}: {.value}| {/inst.attributes} <span class="sliderValText">Price Adjustment: <output class="output">{@formatNumber val=sliderVal style="percent"/}</output></span>
+<input class="delete hidden" value="delete" type="button"/>
+</h3>
+
+<div class="sliderBarDiv">
+    <div class="slider"></div>
+</div>

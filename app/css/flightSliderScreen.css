@@ -1,0 +1,39 @@
+#publicationDD{
+    margin-bottom: 10px;
+}
+
+.error {
+	margin-top: 3px;
+	margin-bottom: 3px;
+	display: block;
+}
+
+#flightSliders {
+	margin-bottom: 20px;
+}
+
+.submission {
+	margin-top: 10px;
+	display: inline-block;
+}
+
+#flightSliders .sliderDiv {
+    padding: 15px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    position: relative;
+}
+
+#flightSliders .sliderDiv h3 {
+    line-height: 1;
+}
+
+#flightSliders .sliderDiv:nth-child(even) {
+    background: #F4F4F4;
+}
+
+.delete {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}

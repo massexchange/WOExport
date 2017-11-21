@@ -1,0 +1,31 @@
+#resultContainer {
+	text-align: center;
+	margin-top: 10px;
+}
+
+#controls {
+    text-align: center;
+    margin: auto;
+}
+
+#dateRange,
+#search {
+	display: inline-block;
+}
+
+#search {
+	margin-left: 10px;
+}
+
+#clear {
+	display: none;
+}
+
+#controls input {
+	display: inline-block;
+}
+
+#dateSearchType input {
+	display: inline;
+	margin-left: 10px;
+}

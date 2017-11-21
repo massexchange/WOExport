@@ -1,0 +1,17 @@
+{?config.showScale}
+    <span class="minText">
+        {@eq key="percent" value=config.type}
+            {>percent data=config.minVal/}
+        {:else}
+            {config.minVal}
+        {/eq}
+    </span>
+    <span class="maxText">
+        {@eq key="percent" value=config.type}
+            {>percent data=config.maxVal/}
+        {:else}
+            {config.maxVal}
+        {/eq}
+    </span>
+{/config.showScale}
+<input type="range" class="slider {config.sclass}" min="{config.minVal}" max="{config.maxVal}" step="{config.step}" value="{model}"/>

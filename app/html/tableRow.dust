@@ -1,0 +1,3 @@
+{#columns}
+    <td>{>"{type}" data="{data}"/}</td>
+{/columns}

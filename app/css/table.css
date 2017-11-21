@@ -1,0 +1,30 @@
+table {
+    width: 100%;
+}
+
+thead {
+    background-color: white;
+}
+
+th {
+    font-size: 18px;
+    font-family: 'baskervilleregular';
+    line-height: 25px;
+}
+
+.table-striped tbody tr:nth-child(even) {
+  background: #F4F4F4;
+}
+.table-striped tbody tr:nth-child(odd) {
+  background: #FFFFFF;
+}
+
+td {
+    text-align: center;
+    padding: 10px;
+    position: relative;
+}
+
+table input {
+    margin: 0 auto;
+}

@@ -1,0 +1,13 @@
+<div id="title">
+    <h1>AUDIENCE SEGMENT VISUALIZATION</h1>
+    <a href="#" id="help">
+        <i class="fa fa-question-circle fa-lg"></i>
+    </a>
+</div>
+<div>
+    <div id="dateRange"></div>
+    <div id="attributeTypeSelector"/>
+    <input id="render" type="button" value="Visualize Inventory"/>
+</div>
+<div id="parsetContainer"></div>
+<div id="response"></div>

@@ -1,0 +1,49 @@
+<div class="inline">
+    {?id}
+        <h1>ORDER GROUP</h1>
+    {:else}
+        <h1>NEW ORDER GROUP</h1>
+    {/id}
+    <a href="#" id="help"><i class="fa fa-question-circle fa-lg"></i></a>
+    <input id="submitButton" type="button" value="SUBMIT" class="hidden"/>
+    <input id="saveButton" type="button" value="SAVE" class="hidden"/>
+</div>
+
+<div id="orderGroup">
+    <div id="attrSelectorContainer" class="sidebar">
+        <div id="attrSelectors">
+            <div id="marketsContainer" class="clearfix attrSelector gray">
+                <div class="table">
+                    <div class="attrSelectorRow">
+                        <label>Market: </label>
+                        <p id="marketsDropdown"/>
+                    </div>
+                </div>
+            </div>
+            <div id="aparSelector" class="clearfix attrSelector orange"/>
+            <div id="asarSelector" class="clearfix attrSelector green"/>
+        </div>
+    </div>
+
+    <div id="orderGroupParams">
+        <div id="dateRange"/>
+        <div id="otherParams">
+            <div class="row">
+                <span class="left">Ad placement price:</span>
+                <input id="aparPrice" type="number" min="0" step="0.01" class="left" value="{aparPrice}"/>
+            </div>
+            <div class="row">
+                <span class="left">Audience segment price:</span>
+                <input id="asarPrice" type="number" min="0" step="0.01" class="left" value="{asarPrice}"/>
+            </div>
+            <div class="row">
+                <span class="left">Units:</span>
+                <input id="qty" type="number" min="0" step="1" class="left" value="{qty}"/>
+            </div>
+        </div>
+
+        <div id="orderGroupControls" class="buttons right">
+            <div id="results"/>
+        </div>
+    </div>
+</div>

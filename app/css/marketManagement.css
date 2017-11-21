@@ -1,0 +1,17 @@
+#tableContainer {
+	margin: 10px;
+}
+
+td {
+	width: 400px;
+}
+
+tr.row.clickable:hover{
+	background-color: #f49007;
+}
+
+#newButton{
+    display:inline;
+    float:right;
+    margin-top: 28px;
+}

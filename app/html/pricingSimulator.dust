@@ -1,0 +1,46 @@
+<div id="titleBar">
+    <h1>PRICING SIMULATOR</h1>
+    <a href="#" id="help">
+        <i class="fa fa-question-circle fa-lg"></i>
+    </a>
+</div>
+
+<div id="body">
+    <div id="catRecControls">
+        <h3>Inventory Selector</h3>
+        <div id="dateContainer">
+            <div>Date:</div>
+            <input type="date" id="date" min="1980-01-01" max="9999-12-31"/>
+        </div>
+        <div id="aparSelector" class="attrSelector orange"/>
+        <div id="asarSelector" class="attrSelector green"/>
+        <div id="visibleContainer">
+            <h3>Package Selector</h3>
+            <div id="hiddenSelector"/>
+        </div>
+        <input id="viewButton" type="button" value="VIEW" class="hidden"/>
+    </div>
+
+    <div id="data">
+        <h1 id="dataTitle">Pricing Settings</h1>
+        <div id="fixedPriceResult"/>
+        <div id="variablePriceResult"/>
+        <h3>Rate Card Data</h3>
+        <div id="rateCardPrice"/>
+        <div id="rateCardKey"/>
+        <div id="unitTypeName"/>
+        <div id="adSizeName"/>
+        <!-- TODO: remove hidden when variable is back -->
+        <h3 class="hidden">Price Adjustment Graph Data</h3>
+        <div id="daysToFlight"/>
+        <div id="pagPrice"/>
+        <h3>Placement Sliders</h3>
+        <div id="attrAPARSliderTable"/>
+        <h3>Audience Sliders</h3>
+        <div id="attrASARSliderTable"/>
+        <h3>Flight Sliders</h3>
+        <div id="flightSliderTable"/>
+    </div>
+</div>
+
+<div id="response"/>

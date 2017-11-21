@@ -1,0 +1,5 @@
+{?data}
+        {@formatNumber val=data style="currency" currency="USD" minimumFractionDigits=2 maximumFractionDigits=2/}
+    {:else}
+        Not priced
+{/data}

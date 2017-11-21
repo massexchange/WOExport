@@ -1,0 +1,19 @@
+#reports {
+
+}
+
+#reports h3 {
+    margin-top: 0;
+}
+
+#addReport {
+    float: right;
+}
+
+#reportList {
+    margin-top: 10px;
+}
+
+.report:not(:first-child) {
+    margin-top: 15px;
+}

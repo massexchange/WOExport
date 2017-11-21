@@ -1,0 +1,22 @@
+<div id="title">
+    <h1>TEAM BUYING BLACKLIST:
+        <div id="teamDropdownContainer"></div>
+    </h1>
+    <a href="#" id="help">
+        <i class="fa fa-question-circle fa-lg"></i>
+    </a>
+    <input type="button" id="saveButton" class="hidden" value="SAVE"/>
+</div>
+
+<div id="blacklistInstrumentContainer">
+    <div id="blackListControls" class="hidden">
+        <div id="aparAttributeSelector" class="attrSelector clearfix hidden orange"/>
+        <div id="asarAttributeSelector" class="attrSelector clearfix hidden green"/>
+        <div id="buttons">
+            <input type="button" id="createButton" value="ADD" class="hidden"/>
+        </div>
+    </div>
+    <div id="blacklistTable"/>
+</div>
+
+<div id="response" class="error"/>

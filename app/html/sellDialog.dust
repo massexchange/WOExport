@@ -1,0 +1,5 @@
+<div id="header">
+    Market: <div id="marketsDropdownDiv"></div>
+</div>
+<div id="sellFinalizerDiv"/>
+<div id="sellDialogMsg"/>

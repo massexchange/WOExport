@@ -1,0 +1,21 @@
+<div>
+    <h1 id="title"></h1>
+    <a href="#" id="help">
+        <i class="fa fa-question-circle fa-lg"></i>
+    </a>
+    <input id="saveButton" class="hidden" type="submit" value="Save"/>
+</div>
+
+<div id="body">
+    <div id="selectorContainor">
+        <div id="selectorControls" class="hidden">
+            <div id="attrSelector" class="attrSelector"/>
+            <input id="create" type="button" value="ADD"/>
+        </div>
+    </div>
+    <div id="sliders"/>
+</div>
+
+<input id="new" type="button" class="hidden" value="NEW"/>
+
+<div id="response" class="error" />

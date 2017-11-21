@@ -1,0 +1,21 @@
+<div id="heading">
+    <h1>CAMPAIGNS</h1>
+    <a href="#" id="help"><i class="fa fa-question-circle fa-lg"></i></a>
+</div>
+
+<div id="activeContainer">
+    <h3>Active</h3>
+    <div id="campaigns"/>
+</div>
+
+<input id="createCamp" type="button" class="hidden" value="NEW">
+
+<div id="inactiveContainer" class="hidden">
+    <div id="inactiveBar">
+        <h3>Inactive</h3>
+        <input id="inactiveButton" type="button" value="VIEW">
+    </div>
+    <div id="inactiveCampaigns" class="hidden"/>
+</div>
+
+<div id="msg"/>

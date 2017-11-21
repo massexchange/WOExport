@@ -1,0 +1,46 @@
+#logout {
+    display: inline-block;
+    height: 20px;
+    font-size: 14px;
+    margin-left: 20px;
+    width: 80px;
+    color: rgb(0, 0, 0);
+    border-style: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background-color: rgb(244, 144, 7);
+    text-align: center;
+    font-family: 'ITCFranklinGothicStd-Book';
+    font-weight: 500;
+    padding: 3px;
+    outline: none;
+    transition: background 0.3s ease 0s, color 0.3s ease 0s;
+}
+
+#logout:hover {
+    background-color: #fff;
+    transition: background 0.3s ease 0s, color 0.3s ease 0s;
+}
+
+#displayName {
+    float: left;
+    font-size: 14px;
+    margin-left: 0px;
+    margin-top: 8px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+#cog {
+    color: #fff;
+    padding: 0px 0px 0px 20px;
+    cursor: pointer;
+}
+
+#settings {
+    left: 20px;
+}
+
+#userManagementLink{
+    display: none;
+}

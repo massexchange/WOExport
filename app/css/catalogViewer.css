@@ -1,0 +1,90 @@
+.error {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    display: block;
+}
+
+#catalog .red,
+#catalog .gray {
+    width: 100%;
+    padding: 10px 10px 0;
+    background: #f4f4f4;
+}
+
+#catalogFilters {
+    width: 23.5%;
+    position: fixed;
+    overflow-y: auto;
+    height: 75%;
+    z-index: 101;
+    min-width: 237px;
+    max-width: 325px;
+}
+
+#dateRange input {
+    width: 100%;
+    padding: 3px;
+}
+
+#dateRange .right {
+    width: 66%;
+}
+
+#catalogResults {
+    width: 70%;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+#catalogFilterControls input {
+    width: 60%;
+    margin: 10px auto 0;
+}
+
+#controls {
+    text-align: center;
+    width: 60%;
+    margin: auto;
+}
+
+#controls input {
+    display: inline-block;
+}
+
+#catalogFilters #dateRange label {
+    display: block;
+    margin: 1em 0;
+}
+
+#matchType {
+    margin-bottom: 10px;
+}
+
+#matchType .right {
+    width: 66%;
+}
+
+#matchType label[for=exact],
+#matchType label[for=contains] {
+    display: inline;
+    width: initial;
+}
+
+#matchType input {
+    display: inline;
+    width: initial;
+}
+
+.vex-dialog-input {
+    font-size: 13px;
+}
+
+#dialogMsg {
+    text-align: center;
+}
+
+.attrBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

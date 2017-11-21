@@ -1,0 +1,40 @@
+#titleBar, #titleInfo, #buttonBar, #shortNameContainer, #longNameContainer{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+}
+
+#titleInfo{
+	justify-content: flex-start;
+}
+
+#titleBar{
+	justify-content: space-between;
+}
+
+#save{
+	margin-right: 10px;
+}
+
+#childContainer, #attrTypeContainer{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+
+#shortNameContainer, #longNameContainer{
+	justify-content: flex-start;
+}
+
+#shortName, #longName{
+	margin: 5px 0px 5px 5px;
+}
+
+#addChild, #addAttrType{
+	margin-top: 5px;
+}
+
+#unitTypeDD, #childTable, #attrTypeTable{
+	margin-left: 5px;
+}

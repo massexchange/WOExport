@@ -1,0 +1,59 @@
+#teamDropdownContainer select {
+  max-width: 300px;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.content {
+  width: 60%;
+  margin: 0 auto;
+}
+
+#teamName {
+  margin-left: 10px;
+}
+
+#controls input {
+  margin-top: 10px;
+}
+
+td {
+  text-align: center;
+  margin: 0 auto;
+}
+
+input[type="checkbox"] {
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 28px;
+  line-height: 1em;
+  clear: both;
+  margin-bottom: 30px;
+  margin-top: 28px;
+}
+
+table {
+  margin-top: 24px;
+  margin-bottom: 20px;
+}
+
+thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+#response {
+  margin-top: 10px;
+}
+
+#deleteButton {
+    display:inline;
+    float:right;
+    margin-top: 28px;
+    margin-left: 10px;
+}

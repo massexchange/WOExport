@@ -1,0 +1,23 @@
+<div id="title">
+    <h1>PORTFOLIO</h1>
+    <a href="#" id="help">
+        <i class="fa fa-question-circle fa-lg"></i>
+    </a>
+</div>
+<div id="portfolio">
+    <div id="portfolioFilters" class="left sidebar">
+        <div id="dropdowns" class="clearfix">
+            <div class="left">
+                <label id="campLabel">Campaign: </label>
+            </div>
+            <div class="right">
+                <div id="campDropdown"/>
+            </div>
+        </div>
+    </div>
+    <div id="portfolioResults" class="right">
+        <div id="msg"></div>
+        <div id="results" class="center"/>
+        <div id="pageNav" class="center"/>
+    </div>
+</div>

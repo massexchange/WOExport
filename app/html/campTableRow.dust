@@ -1,0 +1,7 @@
+<td>{name}</td>
+<td>{status}</td>
+<td>{advertiser}</td>
+<td>{budget}</td>
+<td>{agencyFee}</td>
+<td>{flightStartDate}</td>
+<td>{flightEndDate}</td>

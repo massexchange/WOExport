@@ -1,0 +1,333 @@
+html {
+  box-sizing: border-box;
+}
+html, body, #wrapper {
+  height:100%;
+  min-height:100%;
+  overflow: hidden;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* FONTS
+-------------------------------------------------------------- */
+
+@font-face {
+    font-family: 'baskervilleregular';
+    src: url('fonts/baskerville-regular-webfont.eot');
+    src: url('fonts/baskerville-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/baskerville-regular-webfont.woff2') format('woff2'),
+         url('fonts/baskerville-regular-webfont.woff') format('woff'),
+         url('fonts/baskerville-regular-webfont.ttf') format('truetype'),
+         url('fonts/baskerville-regular-webfont.svg#baskervilleregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'ITCFranklinGothicStd-Book';
+  src: url('fonts/ITCFranklinGothicStd-Book.eot') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ITCFranklinGothicStd-Book';
+  src:  url('fonts/ITCFranklinGothicStd-Book.otf')  format('opentype'),
+        url('fonts/ITCFranklinGothicStd-Book.ttf')  format('truetype'),
+        url('fonts/ITCFranklinGothicStd-Book.svg#ITCFranklinGothicStd-Book') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ITCFranklinGothicStd-Demi';
+  src: url('fonts/ITCFranklinGothicStd-Demi.eot') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: '../ITCFranklinGothicStd-Demi';
+  src:  url('fonts/ITCFranklinGothicStd-Demi.otf')  format('opentype'),
+        url('fonts/ITCFranklinGothicStd-Demi.ttf')  format('truetype'),
+        url('fonts/ITCFranklinGothicStd-Demi.svg#ITCFranklinGothicStd-Demi') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* GENERAL SETTINGS -- LAYOUT, NAVIGATION
+-------------------------------------------------------------- */
+
+body {
+    font-family: 'ITCFranklinGothicStd-Book';
+    font-size: 14px;
+    color: #404040;
+}
+
+input {
+	display: block;
+}
+
+a {
+    transition: background 0.3s ease 0s, color 0.3s ease 0s;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.bold {
+    font-family: 'source_sans_probold';
+}
+
+h1 {
+    display: inline-block;
+    font-size: 28px;
+    font-family: 'baskervilleregular';
+    line-height: 1.4em;
+    margin-bottom: 30px;
+    margin-top: 28px;
+    vertical-align: middle;
+}
+
+h2 {
+    font-size: 21px;
+    font-family: 'baskervilleregular';
+    line-height: 1em;
+    margin: 0 0 15px 0;
+}
+
+h3 {
+    font-size: 18px;
+    font-family: 'baskervilleregular';
+    line-height: 25px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"] {
+    outline-color: #F39000;
+    background: #D6D6D6;
+    border: 0;
+    margin-bottom: 10px;
+    font-family: 'ITCFranklinGothicStd-Book';
+    font-size: 14px;
+    font-weight: 500;
+    padding: 5px;
+}
+
+.button {
+    cursor: pointer;
+}
+
+input[type="button"],
+input[type="submit"],
+.button,
+button[type="submit"] {
+    background: #424242;
+    color: #fff;
+    outline: none;
+    padding: 7px 16px 5px;
+    transition: background 0.3s ease 0s, color 0.3s ease 0s;
+    border-radius: 4px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-style: none;
+    font-family: 'ITCFranklinGothicStd-Book';
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+input[type="button"]:hover,
+input[type="submit"]:hover,
+.button:hover,
+button[type="submit"]:hover {
+    background: #F49007;
+}
+
+input[disabled][type=submit],
+input[disabled][type=button],
+.button[disabled],
+button[disabled][type="submit"] {
+    background-color: #b5b5b5;
+    color: #e6e6e6;
+}
+
+.hidden {
+    display: none !important;
+}
+
+label {
+    display: inline;
+}
+
+.regular-checkbox {
+    display: none;
+}
+
+.regular-checkbox + label {
+    background-color: #D6D6D6;
+    border: none;
+    box-shadow: none;
+    padding: 7px;
+    display: inline-block;
+    position: relative;
+    margin-left: 5%;
+}
+
+.regular-checkbox:checked + label {
+    background-color: #AAAAAA;
+    border: none;
+    box-shadow: none;
+    color: #424242;
+}
+
+.regular-checkbox:checked + label:after {
+    font-family: "FontAwesome";
+    content: '\f00c';
+    font-size: 14px;
+    position: absolute;
+    top: 0px;
+    left: 1px;
+    color: #424242;
+}
+
+select:not([size]) {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   background: #D6D6D6;
+   border: 0;
+   padding: 7px 40px 2px 10px;
+   font-family: "ITCFranklinGothicStd-Book";
+   outline: none;
+   border-radius: 0;
+   background: url(../img/dropdown-arrow.png) no-repeat right center #D6D6D6;
+}
+
+select:not([size]):hover {
+    cursor: pointer;
+}
+
+.arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid black;
+}
+
+.center {
+    margin: 0 auto;
+}
+
+.clearfix {
+    overflow: auto;
+}
+
+input[type="range"] {
+    width: 100%;
+}
+
+label.radio-button {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding-left: 25px;
+    margin-right: 15px;
+    font-size: 13px;
+}
+input[type=radio] {
+    /*display: none;*/
+}
+label.radio-button:before {
+    content: "";
+
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+
+    border-radius: 8px;
+    margin-right: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    background-color: #D6D6D6;
+}
+
+.radio label.radio-button:before {
+    border-radius: 8px;
+}
+
+.error,
+.buffer-horizontal {
+    height: 15px;
+    width: 100%;
+    text-align: center;
+}
+
+input[type=radio]:checked + label.radio-button:before {
+    content: "\2022";
+    color: #424242;
+    font-size: 30px;
+    text-align: center;
+    line-height: 18px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.onoffswitch {
+    position: relative; width: 90px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 0px;
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 26px;
+    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+.onoffswitch-inner:before {
+    padding-left: 10px;
+    background-color: #2E8DEF; color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+    padding-right: 10px;
+    background-color: #CCCCCC; color: #333333;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 25px; margin: 0px;
+    background: #000000;
+    position: absolute; top: 0; bottom: 0;
+    right: 65px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+}
