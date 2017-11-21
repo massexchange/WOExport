@@ -1,0 +1,5 @@
+<input type="button" id="addReport" value="Add">
+
+<h3>Reports</h3>
+
+<div id="reportList"></div>

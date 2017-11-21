@@ -1,0 +1,7 @@
+<span>
+	{?data}
+		{@formatDate val=data month="long" day="numeric" year="numeric"/}
+	{:else}
+		N/A
+	{/data}
+</span>

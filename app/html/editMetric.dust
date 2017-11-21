@@ -1,0 +1,4 @@
+<h4 class="metricName">{name}</h4>
+
+<label>Type</label>
+<div class="metricType"></div>

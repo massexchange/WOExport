@@ -1,0 +1,53 @@
+#blackListControls {
+    display: flex;
+    flex-flow: column;
+    flex: 0 0 auto;
+    align-items: center;
+}
+
+#teamDropdownContainer select {
+	max-width: 300px;
+}
+
+#permTablesContainer div {
+	margin-bottom: 20px;
+}
+
+#blackListInstrumentContainer .attrSelector .right {
+    width: inherit;
+    position: static;
+}
+
+#blacklistInstrumentContainer{
+    top: 150px;
+    bottom: 60px;
+    width: inherit;
+    display: flex;
+    flex-flow: row;
+}
+
+#blacklistTable div:nth-child(even) {
+    background: #F4F4F4;
+}
+
+#blacklistTable {
+    overflow-y: auto;
+    flex: 1 1 auto;
+}
+
+#blacklistTable .blacklistRow{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    min-height: 30px;
+    padding: 8px;
+}
+
+#blacklistTable .delete {
+    align-self: flex-start;
+    flex: 0 0 0;
+}
+
+#response {
+    width: inherit;
+}

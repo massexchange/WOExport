@@ -1,0 +1,118 @@
+.sidebar {
+    width: 23.5%;
+    height: 75%;
+    position: fixed;
+    overflow-y: auto;
+    min-width: 237px;
+    max-width: 325px;
+}
+
+#info {
+    background: #F4F4F4;
+    padding: 10px 10px 0 10px;
+}
+
+#campaignLabels label {
+    margin: 0px 0 10px 0;
+    display: block;
+    height: 30px;
+}
+
+#info right {
+    width: 66%;
+}
+
+#info input,
+#info select,
+#status {
+    width: 165px;
+    height: 30px;
+}
+
+#status {
+    margin-top: 10px;
+    display: block;
+}
+
+#campControls input {
+    width: 60%;
+    margin: 10px auto 0px auto;
+}
+
+#budgetInput,
+#agencyFeeInput {
+    outline-color: #F39000;
+    background: #D6D6D6;
+    border: 0;
+    margin-bottom: 10px;
+    font-family: 'ITCFranklinGothicStd-Book';
+    font-size: 14px;
+    font-weight: 500;
+    padding: 5px;
+}
+
+#agencyFeeInput {
+    width: 100px !important;
+    display: inline;
+}
+
+#deactivateButton {
+    display:inline;
+    float:right;
+    margin-top: 28px;
+    margin-left: 10px;
+}
+
+#mainBody, #buttons, #info {
+    display: flex;
+    align-items: flex-start;
+}
+
+#mainBody {
+    justify-content: flex-start;
+}
+
+#buttons, #info {
+    justify-content: space-between;
+}
+
+#campaignLabels {
+    min-width: 75px;
+}
+
+#orderGroupsContainer, #createOG, #cancel, #submit, #inputs {
+    margin-left: 10px;
+}
+
+#orderGroups .editContainer {
+    width: 1%;
+}
+
+#orderGroups th {
+    font-size: 12pt;
+    padding: 0 10px 10px;
+}
+
+#toggleContainer {
+    margin-top: 10px;
+    position: relative;
+    width: 100px;
+    vertical-align: middle;
+    text-align: left;
+}
+
+.onoffswitch-switch {
+    right: 75px;
+}
+.onoffswitch-inner::before {
+    content: "Active";
+    background-color: rgb(244, 144, 7);
+}
+.onoffswitch-inner::after {
+    content: "Inactive";
+    font-size: 14px;
+}
+
+.vex-theme-mx .vex-content.statusDialog {
+    width: 400px;
+}

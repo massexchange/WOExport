@@ -1,0 +1,8 @@
+<div class="row dateSelector">
+    <span class="left">Start date:</span>
+    <input type="date" id="start" min="1980-01-01" max="9999-12-31"/>
+</div>
+<div class="row dateSelector">
+    <span class="left">End date:</span>
+    <input type="date" id="end" min="1980-01-01" max="9999-12-31"/>
+</div>

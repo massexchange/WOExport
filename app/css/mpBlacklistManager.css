@@ -1,0 +1,36 @@
+#mpDropdown select{
+	max-width: 300px;
+}
+
+#blacklistDiv td {
+	max-width: 300px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.centerContent {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.block {
+    margin: 0 auto;
+    display: inline-block;
+}
+
+td input {
+	display: inline;
+}
+
+#msg {
+	margin-top: 10px;
+}
+
+#save {
+	margin-left:auto;
+}
+
+#addMP,
+#mpDropdown {
+	margin-left: 10px;
+}

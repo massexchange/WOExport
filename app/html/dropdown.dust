@@ -1,0 +1,6 @@
+<select {?showAll} size="{size}"{/showAll} {?disableDropdown}disabled{/disableDropdown}>
+<option value="{defaultItemVal}" {^enableDefault}disabled="disabled"{/enableDefault} selected="selected">{promptText}</option>
+{#items}
+    <option value="{val}">{text}</option>{~n}
+{/items}
+</select>

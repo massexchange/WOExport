@@ -1,0 +1,43 @@
+.attrSlider {
+    padding: 20px;
+}
+
+.attrSlider h3 {
+    line-height: 0;
+}
+
+.attrSlider:nth-child(even) {
+    background: #F4F4F4;
+}
+
+#body{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
+#sliders {
+    flex: 1 1 auto;
+    flex-direction: column;
+    text-align: center;
+    margin: 0px 10px 0px 10px;
+}
+
+#sliders > div{
+    text-align: start;
+}
+
+#attrSelector {
+    flex: 0 0 auto;
+}
+
+#selectorContainor, #selectorControls{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#create, #new{
+    margin-top: 10px;
+}

@@ -1,0 +1,53 @@
+<h1>{?id}EDIT{:else}CREATE{/id} MARKET PARTICIPANT</h1>
+<a href="#" id="help"><i class="fa fa-question-circle fa-lg"></i></a>
+<div class="content-columns">
+    <div class="center content-column">
+        <!-- <img src="img/LOCATETV-Case-Study.png"> -->
+        <div id="nameContainer" class="row clearfix">
+            <span class="left category-label">Name</span>
+            <input id="name" class="right" type="text" value="{name}" />
+        </div>
+
+        <div id="mediaEmailContainer" class="row clearfix">
+            <span class="left category-label">Media Email</span>
+            <input id="mediaEmail" class="right" type="text" value="{mediaEmail}" />
+        </div>
+
+        <div id="mediaPhoneContainer" class="row clearfix">
+            <span class="left category-label">Media Phone</span>
+            <input id="mediaPhone" class="right" type="text" value="{mediaPhone}" />
+        </div>
+
+        <div id="techEmailContainer" class="row clearfix">
+            <span class="left category-label">Technical Ops Email</span>
+            <input id="techEmail" class="right" type="text" value="{techEmail}" />
+        </div>
+
+        <div id="techPhoneContainer" class="row clearfix">
+            <span class="left category-label">Technical Ops Phone</span>
+            <input id="techPhone" class="right" type="text" value="{techPhone}" />
+        </div>
+
+        <div id="websiteContainer" class="row clearfix">
+            <span class="left category-label">Website</span>
+            <input id="website" class="right" type="text" value="{website}" />
+        </div>
+
+        <div id="mpRoleContainer" class="row clearfix">
+            <span class="left category-label">Role</span>
+            <span class="right">
+                <input type="radio" name="role" value="ADVERTISER" {@eq key=role value="ADVERTISER"}checked{/eq}>Advertiser</input>
+            </span>
+            <span class="right">
+                <input type="radio" name="role" value="PUBLISHER" {@eq key=role value="PUBLISHER"}checked{/eq}>Publisher</input>
+            </span>
+        </div>
+
+        <div id="profileContainer" class="row clearfix">
+            <span class="left category-label">Profile</span>
+            <textarea id="profile" class="right" name="profile" rows="15" cols="60">{profile}</textarea>
+        </div>
+    </div>
+    <input id="save" type="button" value="{?id}Save{:else}Create{/id}">
+</div>
+<br />

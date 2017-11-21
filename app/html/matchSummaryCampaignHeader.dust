@@ -1,0 +1,4 @@
+<h2 class="campaignInfoText">Advertiser: </h2>
+<div class="campaignInfoText fieldVal">{advertiser}</div>
+<h2 class="campaignInfoText">Brand: </h2>
+<div class="campaignInfoText fieldVal">{brand}</div>

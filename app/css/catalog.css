@@ -1,0 +1,16 @@
+.catRec {
+	margin: 5px;
+	border-bottom: 1px dotted black;
+}
+
+.attrButton {
+	border: solid 2px;
+	display: inline-block;
+	padding: 5px;
+	background: lightgrey;
+	margin: 5px;
+}
+
+.attrCol {
+	width: 800px;
+}

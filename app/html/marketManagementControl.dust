@@ -1,0 +1,31 @@
+<div class="content-columns">
+    <div id="marketsColumn">
+        <div class="content-column">
+            <h3>Markets</h3>
+            <div id="marketsTable"/>
+
+            <div id="newMarketContainer" class="hidden">
+                <label for="newMarketNameInput">Name: </label>
+                <input id="newMarketNameInput" type="text" maxlength="64">
+                <input id="addNewMarket" type="button" value="ADD">
+            </div>
+            <div id="marketsInputControls">
+                <input id="newMarket" type="button" value="NEW MARKET">
+                <input id="deleteMarket" type="button" value="DELETE MARKET">
+            </div>
+
+        </div>
+    </div>
+    <div id="mpsColumn" class="hidden">
+        <div class="content-column">
+            <h3>Participants</h3>
+            <div id="mpsTable"/>
+
+            <div id="newMpContainer" class="right">
+                <span id="mpsDropdownContainer" />
+                <input id="addNewMp" type="button" value="ADD">
+            </div>
+        </div>
+    </div>
+    <div id="response" class="error" />
+</div>

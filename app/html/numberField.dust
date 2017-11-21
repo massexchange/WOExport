@@ -1,0 +1,1 @@
+$ <input class="priceInput" type="number" step="0.01" min="0.01" value="{data}"></input>

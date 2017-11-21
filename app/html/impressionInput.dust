@@ -1,0 +1,3 @@
+<div class="impressionInput">
+    <input type="number" min="1" value="{data}">
+</div>

@@ -1,0 +1,47 @@
+#inputsColumn {
+    width: 48%;
+}
+
+#outputsColumnn {
+    width: 48%;
+}
+
+td {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#usersDropdown {
+	margin-right: 30px;
+    font-weight: normal;
+    font-size: 12pt;
+}
+
+#response {
+    margin-top: 10px;
+    clear: right;
+    float: right;
+    text-align: right;
+}
+
+#newMappingContainer,
+#newOutputsContainer {
+    margin-top: 10px;
+    width: 150px;
+}
+
+#mappingsInputControls input {
+    margin-top: 10px;
+    width: 150px;
+}
+
+#mappingOutputsControls input {
+    margin-top: 10px;
+    float: none;
+    width: 150px;
+}
+
+#mpsDropdown select {
+    max-width: 250px;
+}

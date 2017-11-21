@@ -1,0 +1,11 @@
+.removeAttrTypeDD {
+	margin-left: 5px;
+}
+
+.removeAttrTypeDD:hover {
+	cursor: pointer;
+}
+
+#render {
+	margin-top: 10px;
+}

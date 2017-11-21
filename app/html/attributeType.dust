@@ -1,0 +1,55 @@
+<div id="title">
+    <div id="titleInfo">
+        <h1>AttributeType:</h1>
+        <div id="typeDD"></div>
+        <a href="#" id="help">
+            <i class="fa fa-question-circle fa-lg"></i>
+        </a>
+    </div>
+
+    <input type="button" id="saveButton" value="SAVE"/>
+</div>
+
+<div id="propertiesContainer">
+    <h1>Properties</h1>
+    <div id="nameContainer">
+        Name:
+        <input type="text" id="nameField" class="dataDisplay dataInput"/>
+    </div>
+    <div id="componentContainer">
+        Component:
+        <div id="componentsDD"></div>
+    </div>
+</div>
+
+<div id="dependencyContainer">
+    <h1>Parent Types</h1>
+    <div id="parentContainer">
+        <div id="parentAddContainer">
+            <div id="parentDependencyDD"></div>
+            <input type="button" id="parentDependencyAdd" value="Add Parent" disabled="true" class="add"/>
+        </div>
+        <div id="parentDependencyTable"></div>
+    </div>
+    <h1>Child Types</h1>
+    <div id="childContainer">
+        <div id="childAddContainer">
+            <div id="childDependencyDD"></div>
+            <input type="button" id="childDependencyAdd" value="Add Child" disabled="true" class="add"/>
+        </div>
+        <div id="childDependencyTable"></div>
+    </div>
+</div>
+
+<div id="labelContainer">
+    <h1>Labels</h1>
+    <div id="labelContent">
+        <div id="labelAddContainer">
+            <div id="labelDD"></div>
+            <input type="button" id="labelAdd" value="Add Label" disabled="true" class="add"/>
+        </div>
+        <div id="labelTable"></div>
+    </div>
+</div>
+
+<div id="response"></div>

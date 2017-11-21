@@ -1,0 +1,68 @@
+<div id="title">
+    {?id}
+        <h1>CAMPAIGN:&nbsp;</h1>
+        <h1 class="pageHeader">{name}</h1>
+    {:else}
+        <h1>NEW CAMPAIGN</h1>
+    {/id}
+    <a href="#" id="help">
+        <i class="fa fa-question-circle fa-lg"></i>
+    </a>
+    <input id="saveButton" type="button" value="{?id}Save{:else}Create{/id}" class="hidden">
+</div>
+<div id="mainBody">
+    <div id="campaign">
+        <div id="info" class="clearfix">
+            <div id="campaignLabels">
+                <label for="nameInput">Name: </label>
+                <label for="advInput">Advertiser: </label>
+                <label for="brandInput">Brand: </label>
+                <label for="budgetInput">Budget: </label>
+                <label for="agencyFeeInput">Agency Fee: </label>
+                <label for="flightStartInput">Flight Start: </label>
+                <label for="flightEndInput">Flight End: </label>
+                <label for="userTeams">Team: </label>
+                <label>Status: </label>
+            </div>
+            <div id="inputs">
+                <div><input id="nameInput" type="text" value="{name}" maxlength="64" /></div>
+                <div><input id="advInput" type="text" value="{advertiser}" maxlength="64" /></div>
+                <div><input id="brandInput" type="text" value="{brand}" maxlength="64" /></div>
+                <div><input id="budgetInput" type="number" min="0" max="9999999999999.99" step="0.01" value="{@formatNumber val=budget useGrouping=0 minimumFractionDigits=2/}" /></div>
+                <div><input id="agencyFeeInput" type="number" min="0" max="100" step="1" value="{@math key="{agencyFee}" method="multiply" operand="100"/}" /> % </div>
+                <div><input id="flightStartInput" type="date" value="{flightStartDate}" /></div>
+                <div><input id="flightEndInput" type="date" value="{flightEndDate}" /></div>
+                <div id="userTeams"></div>
+                <div id="status" class="hidden">{?id}{status}{:else}Active{/id}</div>
+                <div id="toggleContainer" class="hidden">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="campToggle" {@eq key=status value="Active"}checked{/eq}>
+                    <label class="onoffswitch-label" for="campToggle">
+                        <span class="onoffswitch-inner"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div id="campControls">
+        </div>
+    </div>
+
+    {?id}
+        {@gt key=orderGroups.length value=0}
+            <div id="orderGroupsContainer">
+                <h2>ORDERGROUPS</h2>
+                <div id="orderResults">
+                    <div id="orderGroups" class="center"></div>
+                    <div id="pageNav" class="center"></div>
+                </div>
+                <div id="buttons" class="right">
+                    <input id="createOG" type="button" value="Create OrderGroup" class="hidden">
+                    <input id="cancel" type="button" value="Cancel" class="hidden"/>
+                    <input id="submit" type="button" value="Submit" class="hidden"/>
+                </div>
+            </div>
+        {:else}
+            <input id="createOG" type="button" value="Create OrderGroup" class="hidden">
+        {/gt}
+    {/id}
+</div>

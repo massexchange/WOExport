@@ -1,0 +1,396 @@
+[
+    {
+        "description": "Admin",
+        "mpRole": "STAFF",
+    "allowedUserRoles": ["ROLE_MX_ADMIN"],
+    "children": [
+      {
+        "name": "admin",
+        "description": "Admin Panel",
+        "mpRole": "STAFF",
+        "allowedUserRoles": ["ROLE_MX_ADMIN"]
+      },
+      {
+        "name": "import",
+        "description": "Import",
+        "mpRole": "STAFF",
+        "allowedUserRoles": ["ROLE_MX_ADMIN"]
+      },
+      {
+        "name": "mappings",
+        "description": "Import Mappings",
+        "mpRole": "STAFF",
+        "allowedUserRoles": ["ROLE_MX_ADMIN"]
+      },
+      {
+        "name":"importReview",
+        "description": "Review Import",
+        "mpRole":"STAFF",
+        "allowedUserRoles":["ROLE_MX_ADMIN"]
+      },
+      {
+        "name":"organizationManagement",
+        "description":"Organization Managment",
+        "mpRole":"STAFF",
+        "allowedUserRoles":["ROLE_MX_ADMIN"]
+      },
+      {
+        "name":"attributeTypeManagement",
+        "description":"AttributeType Management",
+        "mpRole":"STAFF",
+        "allowedUserRoles":["ROLE_MX_ADMIN"]
+      },
+      {
+        "name":"unitTypeManagement",
+        "description":"UnitType Management",
+        "mpRole":"STAFF",
+        "allowedUserRoles":["ROLE_MX_ADMIN"]
+      },
+      {
+        "name":"defaultUnitTypeGroupManagement",
+        "description":"Default Unit Type Group Management",
+        "mpRole":"STAFF",
+        "allowedUserRoles":["ROLE_MX_ADMIN"]
+      },
+      {
+        "name": "globalSettingManager",
+        "description": "Global Setting Management",
+        "mpRole":"STAFF",
+        "allowedUserRoles":["ROLE_MX_ADMIN"]
+      }
+    ]
+  },
+  {
+    "description": "Market",
+        "mpRole": "BOTH",
+        "allowedUserRoles": ["ANY"],
+        "children": [
+            {
+                "name": "marketViewer",
+                "description": "View",
+                "mpRole": "BOTH",
+                "allowedUserRoles": ["ANY"]
+            },
+            {
+                "name": "marketManagement",
+                "description": "Private",
+                "mpRole": "BOTH",
+                "allowedUserRoles": [
+                    "ROLE_MX_ADMIN",
+                    "ROLE_MP_ADMIN",
+                    "ROLE_TEAM_ADMIN",
+                    "ROLE_REVENUE_YIELD"
+                ]
+            }
+        ]
+    },
+    {
+        "description": "Catalog",
+        "mpRole": "PUBLISHER",
+        "allowedUserRoles": ["ANY"],
+        "children": [
+            {
+                "name": "catalogViewer",
+                "description": "Search",
+                "mpRole": "PUBLISHER",
+                "allowedUserRoles": [
+                    "ROLE_MX_ADMIN",
+                    "ROLE_MP_ADMIN",
+                    "ROLE_SALES",
+                    "ROLE_REVENUE_YIELD",
+                    "ROLE_AD_OPS"
+                ]
+            },
+            {
+                "name": "placementVisualization",
+                "description": "Placement",
+                "mpRole": "PUBLISHER",
+                "allowedUserRoles": ["ANY"]
+            },
+            {
+                "name": "audienceSegmentVisualization",
+                "description": "Audience",
+                "mpRole": "PUBLISHER",
+                "allowedUserRoles": ["ANY"]
+            }
+        ]
+    },
+    {
+        "description": "Pricing",
+        "mpRole": "PUBLISHER",
+        "allowedUserRoles": [
+            "ROLE_MX_ADMIN",
+            "ROLE_MP_ADMIN",
+            "ROLE_SALES",
+            "ROLE_AD_OPS",
+            "ROLE_REVENUE_YIELD"
+        ],
+        "children": [
+            {
+                "name": "rateCardViewer",
+                "description": "Rate Card",
+                "mpRole": "PUBLISHER",
+                "allowedUserRoles": [
+                    "ROLE_MX_ADMIN",
+                    "ROLE_MP_ADMIN",
+                    "ROLE_SALES",
+                    "ROLE_AD_OPS",
+                    "ROLE_REVENUE_YIELD"
+                ]
+            },
+            {
+                "name": "flightSliderScreen",
+                "description": "Flight",
+                "mpRole": "PUBLISHER",
+                "allowedUserRoles": [
+                    "ROLE_MX_ADMIN",
+                    "ROLE_MP_ADMIN",
+                    "ROLE_REVENUE_YIELD",
+                    "ROLE_AD_OPS"
+                ]
+            },
+            {
+                "name": "aparAttributeSliderScreen",
+                "description": "Placement",
+                "mpRole": "PUBLISHER",
+                "allowedUserRoles": [
+                    "ROLE_MX_ADMIN",
+                    "ROLE_MP_ADMIN",
+                    "ROLE_AD_OPS",
+                    "ROLE_REVENUE_YIELD"
+                ]
+            },
+            {
+                "name": "asarAttributeSliderScreen",
+                "description": "Audience",
+                "mpRole": "PUBLISHER",
+                "allowedUserRoles": [
+                    "ROLE_MX_ADMIN",
+                    "ROLE_MP_ADMIN",
+                    "ROLE_AD_OPS",
+                    "ROLE_REVENUE_YIELD"
+                ]
+            },
+            {
+                "name": "revenueManager",
+                "description": "Revenue Manager",
+                "mpRole": "PUBLISHER",
+                "allowedUserRoles": [
+                    "ROLE_MX_ADMIN",
+                    "ROLE_MP_ADMIN",
+                    "ROLE_SALES",
+                    "ROLE_AD_OPS",
+                    "ROLE_REVENUE_YIELD"
+                ]
+            },
+            {
+                "name": "pricingSimulator",
+                "description": "Simulator",
+                "mpRole": "PUBLISHER",
+                "allowedUserRoles": [
+                    "ROLE_MX_ADMIN",
+                    "ROLE_MP_ADMIN",
+                    "ROLE_SALES",
+                    "ROLE_AD_OPS",
+                    "ROLE_REVENUE_YIELD"
+                ]
+            }
+        ]
+    },
+    {
+        "description": "Portfolio",
+        "mpRole": "ADVERTISER",
+        "allowedUserRoles": [
+            "ROLE_MX_ADMIN",
+            "ROLE_MP_ADMIN",
+            "ROLE_TEAM_ADMIN",
+            "ROLE_BUYER",
+            "ROLE_PLANNER",
+            "ROLE_TEAM_READONLY",
+            "ROLE_ADV_CLIENT_USER"
+        ],
+        "children": [
+            {
+                "name": "portfolio",
+                "description": "Search",
+                "mpRole": "ADVERTISER",
+                "allowedUserRoles": [
+                    "ROLE_MX_ADMIN",
+                    "ROLE_MP_ADMIN",
+                    "ROLE_TEAM_ADMIN",
+                    "ROLE_BUYER",
+                    "ROLE_PLANNER",
+                    "ROLE_TEAM_READONLY",
+                    "ROLE_ADV_CLIENT_USER"
+                ]
+            }
+        ]
+    },
+    {
+        "description": "Orders",
+        "mpRole": "BOTH",
+        "allowedUserRoles": [
+            "ROLE_MX_ADMIN",
+            "ROLE_MP_ADMIN",
+            "ROLE_TEAM_ADMIN",
+            "ROLE_BUYER",
+            "ROLE_PLANNER",
+            "ROLE_SALES",
+            "ROLE_AD_OPS",
+            "ROLE_TEAM_READONLY"
+        ],
+        "children": [
+            {
+                "name": "sellOrderManager",
+                "description": "Manage",
+                "mpRole": "PUBLISHER",
+                "allowedUserRoles": [
+                    "ROLE_MX_ADMIN",
+                    "ROLE_MP_ADMIN",
+                    "ROLE_SALES",
+                    "ROLE_AD_OPS"
+                ]
+            },
+            {
+                "name": "campaigns",
+                "description": "Campaigns",
+                "mpRole": "ADVERTISER",
+                "allowedUserRoles": [
+                    "ROLE_MX_ADMIN",
+                    "ROLE_MP_ADMIN",
+                    "ROLE_TEAM_ADMIN",
+                    "ROLE_BUYER",
+                    "ROLE_PLANNER",
+                    "ROLE_TEAM_READONLY"
+                ]
+            },
+            {
+                "name": "orderGroupManager",
+                "description": "Manage",
+                "mpRole": "ADVERTISER",
+                "allowedUserRoles": [
+                    "ROLE_MX_ADMIN",
+                    "ROLE_MP_ADMIN",
+                    "ROLE_TEAM_ADMIN",
+                    "ROLE_BUYER",
+                    "ROLE_PLANNER"
+                ]
+            },
+            {
+                "name": "historyViewer",
+                "description": "History",
+                "mpRole": "BOTH",
+                "allowedUserRoles": [
+                    "ROLE_MX_ADMIN",
+                    "ROLE_MP_ADMIN",
+                    "ROLE_TEAM_ADMIN",
+                    "ROLE_BUYER",
+                    "ROLE_PLANNER",
+                    "ROLE_SALES",
+                    "ROLE_AD_OPS"
+                ]
+            },
+            {
+                "name": "matchSummary",
+                "description": "Summary",
+                "mpRole": "BOTH",
+                "allowedUserRoles": [
+                    "ROLE_MX_ADMIN",
+                    "ROLE_MP_ADMIN",
+                    "ROLE_TEAM_ADMIN",
+                    "ROLE_BUYER",
+                    "ROLE_PLANNER",
+                    "ROLE_SALES",
+                    "ROLE_AD_OPS"
+                ]
+            }
+        ]
+    },
+    {
+        "description": "Compliance",
+        "mpRole": "BOTH",
+        "allowedUserRoles": [
+            "ROLE_MX_ADMIN",
+            "ROLE_MP_ADMIN",
+            "ROLE_TEAM_ADMIN",
+            "ROLE_BUYER",
+            "ROLE_PLANNER",
+            "ROLE_TEAM_READONLY",
+            "ROLE_AD_OPS",
+            "ROLE_REVENUE_YIELD"
+        ],
+        "children": [
+            {
+                "name": "teamManagement",
+                "description": "Teams",
+                "mpRole": "ADVERTISER",
+                "allowedUserRoles": [
+                    "ROLE_MX_ADMIN",
+                    "ROLE_MP_ADMIN",
+                    "ROLE_TEAM_ADMIN",
+                    "ROLE_BUYER",
+                    "ROLE_PLANNER",
+                    "ROLE_TEAM_READONLY"
+                ]
+            },
+            {
+                "name": "teamBuyingBlacklists",
+                "description": "Team Buying Blacklists",
+                "mpRole": "ADVERTISER",
+                "allowedUserRoles": [
+                    "ROLE_MX_ADMIN",
+                    "ROLE_MP_ADMIN",
+                    "ROLE_TEAM_ADMIN",
+                    "ROLE_BUYER",
+                    "ROLE_PLANNER",
+                    "ROLE_TEAM_READONLY"
+                ]
+            },
+            {
+                "name": "mpBlacklistManager",
+                "description": "Blacklists",
+                "mpRole": "BOTH",
+                "allowedUserRoles": [
+                    "ROLE_MX_ADMIN",
+                    "ROLE_MP_ADMIN",
+                    "ROLE_AD_OPS",
+                    "ROLE_REVENUE_YIELD"
+                ]
+            }
+        ]
+    },
+    {
+        "description": "Planner",
+        "mpRole": "ADVERTISER",
+        "allowedUserRoles": [
+            "ROLE_MX_ADMIN",
+            "ROLE_PLANNER"
+        ],
+        "children": [
+            {
+                "name": "plan/admin",
+                "description": "Admin",
+                "mpRole": "ADVERTISER",
+                "allowedUserRoles": ["ROLE_MX_ADMIN"]
+            },
+            {
+                "name": "plan/pmpValuation",
+                "description": "PMP Valuation",
+                "mpRole": "ADVERTISER",
+                "allowedUserRoles": [
+                    "ROLE_MX_ADMIN",
+                    "ROLE_PLANNER"
+                ]
+            },
+            {
+                "name": "plan/ioValuation",
+                "description": "IO Valuation",
+                "mpRole": "ADVERTISER",
+                "allowedUserRoles": [
+                    "ROLE_MX_ADMIN",
+                    "ROLE_PLANNER"
+                ]
+            }
+        ]
+    }
+]

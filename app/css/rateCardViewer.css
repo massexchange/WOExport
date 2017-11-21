@@ -1,0 +1,18 @@
+#create {
+    margin-top: 10px;
+}
+
+#attrSelector {
+    width: 23.5%;
+    position: fixed;
+    overflow-y: auto;
+    height: 75%;
+    z-index: 101;
+    min-width: 237px;
+    max-width: 325px;
+}
+
+#attrSelector label {
+    display: block;
+    margin: 1em 0px 1em 0px;
+}

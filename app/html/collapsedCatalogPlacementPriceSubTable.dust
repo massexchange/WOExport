@@ -1,0 +1,12 @@
+<table class="table table-striped">
+    <tbody>
+        <tr class="row">
+            <td>Variable</td>
+            <td>{>"price" data=dynApar /}</td>
+        </tr>
+        <tr class="row">
+            <td>Fixed</td>
+            <td>{>"price" data=staticApar /}</td>
+        </tr>
+    </tbody>
+</table>

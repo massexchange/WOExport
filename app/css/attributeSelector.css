@@ -1,0 +1,58 @@
+.attrSelector {
+    padding: 10px 10px 0 10px;
+    background: #F4F4F4;
+    min-width: 237px;
+    max-width: 325px;
+    width: 100%;
+}
+
+.attrSelector > div {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: none;
+}
+
+.attrSelectorRow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0px;
+}
+
+.attrSelector [hidden] {
+	padding: 0px;
+}
+
+.attrSelectorRow label, p {
+	margin: 0;
+}
+
+.attrSelector p {
+    width: 40%;
+}
+
+.attrSelector select,
+.attrSelector input {
+    padding: 3px;
+    padding-left: 10px;
+}
+
+.attrSelector select {
+    float: right;
+    padding-right: 23px;
+    width: 100%;
+    min-width: 55px;
+}
+
+.attrSelector select:hover {
+    width: initial;
+	min-width: 100%;
+}
+
+.attrSelector #hideToggle {
+    align-self: center;
+	width: 60%;
+	margin: 10px 5px 10px 5px;
+}

@@ -1,0 +1,38 @@
+<div class="reportFields">
+    <label for="reportName{controlId}">Name</label>
+    <input type="text" class="reportName" id="reportName{controlId}" value="{name}">
+
+    <label for="reportSheetName{controlId}">Sheet Name</label>
+    <input type="text" class="reportSheetName" id="reportSheetName{controlId}" value="{sheetName}">
+
+    <input class="saveReport saveReportFields" id="saveReportFields{controlId}" type="button" value="Save" disabled>
+</div>
+
+<div class="valuations">
+    <div>
+        Valuations: <span class="reportValuations">{valuations.length}</span>
+    </div>
+    <label class="uploadReport button" for="uploadReport{controlId}">Upload</label>
+    <input id="uploadReport{controlId}" type="file">
+</div>
+
+<div class="columns hidden">
+    <h4>Columns</h4>
+
+    <input class="addColumn" id="addColumn{controlId}" type="button" value="Add">
+    <div class="unusedColumns hidden" id="unusedColumns{controlId}"></div>
+
+    <div class="columnOrderWrapper">
+        <div class="reportColumns" id="reportColumns{controlId}"></div>
+        <div class="columnOrder" id="columnOrder{controlId}">
+            <div class="columnArrow columnArrowUp">
+                <span>▲</span>
+            </div>
+            <div class="columnArrow columnArrowDown">
+                <span>▼</span>
+            </div>
+        </div>
+    </div>
+    <input class="removeColumn" id="removeColumn{controlId}" type="button" value="Remove" disabled>
+    <input class="saveReport saveReportColumns" id="saveReportColumns{controlId}" type="button" value="Save" disabled>
+</div>

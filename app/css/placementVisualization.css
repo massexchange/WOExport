@@ -1,0 +1,75 @@
+#chart {
+  margin-top: 50px;
+  width: 100%;
+  height: 550px;
+  background: #bbb;
+  font-size: 10px;
+}
+
+#chart svg {
+  margin-top: -30px;
+}
+
+#attrDropdowns {
+  margin-bottom: 10px;
+}
+
+#chart text {
+  pointer-events: none;
+  font-size: 12pt;
+}
+
+#chart .grandparent text {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#chart rect {
+  fill: none;
+  stroke: #fff;
+}
+
+#chart  rect.parent,
+#chart .grandparent rect {
+  stroke-width: 2px;
+}
+#chart .grandparent rect {
+  fill: #fff;
+}
+
+#chart .children rect.parent,
+#chart .grandparent rect {
+  cursor: pointer;
+}
+
+#chart rect.parent {
+  pointer-events: all;
+}
+
+#chart .children:hover rect.child,
+#chart .grandparent:hover rect {
+  fill: #aaa;
+}
+
+#attrDropdowns {
+  display: inline-block;
+}
+
+#attrDropdowns * {
+  width: 250px;
+}
+
+#attrDropdowns div {
+  margin-bottom: 10px;
+}
+
+#dateRange * {
+  width: 250px;
+}
+
+#tooltip {
+  background-color: rgba(242, 242, 242, .6);
+  position: absolute;
+  padding: 5px;
+  z-index:99;
+}

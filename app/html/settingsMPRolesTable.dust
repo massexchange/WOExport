@@ -1,0 +1,12 @@
+<table class="table table-striped">
+    <tbody>
+        <tr class="row">
+            <td>Advertiser</td>
+            <td><input name="advertiser" type="checkbox" {?adv}checked{/adv}></td>
+        </tr>
+        <tr class="row">
+            <td>Publisher</td>
+            <td><input name="publisher" type="checkbox" {?pub}checked{/pub}></td>
+        </tr>
+    </tbody>
+</table>

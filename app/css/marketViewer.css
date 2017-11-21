@@ -1,0 +1,108 @@
+#marketViewerTableResults {
+	margin: 10px;
+	text-align: center;
+}
+
+#dates > div {
+	display: inline-block;
+}
+
+#msg {
+    text-align: center;
+}
+
+#marketViewerTableResults > div {
+	margin: 5px;
+	display: inline-block;
+}
+
+#marketViewer .red, #marketViewer .gray {
+    width: 100%;
+    padding: 10px 10px 0 10px;
+    background: #F4F4F4;
+}
+
+.bids,
+.asks {
+    width: 48%;
+}
+
+#ASAR {
+    padding-left: 3%;
+    border-left: 1px #d6d6d6 solid;
+}
+
+#APAR {
+    padding-right: 3%;
+}
+
+.priceTableContainer {
+	width: 50%;
+}
+
+.priceTableContainer th {
+    text-align: center;
+    font-size: 14px;
+    line-height: normal;
+    font-weight: normal;
+    padding: 0 4% 0 5%;
+}
+
+h2 {
+	margin-top: 0px;
+}
+
+#marketViewerFilterContainer {
+    width: 23.5%;
+    position: fixed;
+    overflow-y: auto;
+    height: 75%;
+    z-index: 101;
+    min-width: 237px;
+    max-width: 325px;
+}
+
+#marketViewerResults {
+    width: 70%;
+}
+
+#marketViewerFilterControls input {
+    width: 60%;
+    margin: 10px auto 0px auto;
+}
+
+#marketViewerFiltersControls input {
+    width: 60%;
+    margin: 10px auto 0px auto;
+}
+
+#controls {
+    text-align: center;
+    width: 60%;
+    margin: auto;
+}
+
+#controls input {
+    display: inline-block;
+}
+
+#marketViewerFilters .gray label {
+    display: block;
+    margin: 1em 0px 1em 0px;
+}
+
+#dateRange .right {
+    width: 66%;
+}
+
+#dateRange .right input {
+    width: 100%;
+}
+
+#role {
+    margin: 10px;
+}
+
+#role input {
+    display: inline-block;
+}

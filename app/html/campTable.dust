@@ -1,0 +1,14 @@
+<table id="results" class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Advertiser</th>
+            <th>Budget</th>
+            <th>Agency Fee</th>
+            <th>Flight Start</th>
+            <th>Flight End</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>

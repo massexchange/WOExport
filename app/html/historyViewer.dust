@@ -1,0 +1,24 @@
+<div id="title">
+    <h1>HISTORY</h1>
+    <a href="#" id="help">
+        <i class="fa fa-question-circle fa-lg"></i>
+    </a>
+</div>
+<div id="history">
+    <div>
+        <div id="dateRange"/>
+        <input id="search" type="submit" value="Search"/>
+    </div>
+    <div id="dateSearchType">
+        Search by: 
+        <input id="flightDatesRadio" type="radio" name="searchType" value="flightDates"/>
+        <label for="flightDatesRadio">Flight Dates</label>
+        <input id="matchedDatesRadio" type="radio" name="searchType" value="matchDate" checked/>
+        <label for="matchedDatesRadio">Matched Date</label>
+    </div>
+    <div id="responseContainer"/>
+    <div id="historyResults">
+        <div id="results" class="center"/>
+        <div id="pageNav" class="center"/>
+    </div>
+</div>

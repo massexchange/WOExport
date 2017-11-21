@@ -1,0 +1,72 @@
+<h1> For internal dev/QA use ONLY </h1>
+<hr>
+<div>
+    <div id="statusContainer" class="peachpuffBox"></div>
+
+    <div id="sysClockContainer" class="peachpuffBox"></div>
+</div>
+
+<div id="result"></div>
+
+<div id="commandRow">
+    <div id="mpBox" class="adminSection">
+        <div id="mpInfo"></div>
+
+        <div id="mpChange">
+            <h4>Impersonate MP</h4>
+            <div id="changeMpDDContainer"/>
+        </div>
+
+        <div id="mpChangeButtons">
+            <input id="joinMP" type="button" value="JOIN MP">
+            <input id="resetMp" type="button" value="RESET MP">
+        </div>
+    </div>
+
+    <div id="marketsControl" class="peachpuffBox adminSection">
+        <h2>Markets are currently: </h2>
+        <div class="marketSwitch">
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="marketSwitch" checked>
+            <label class="onoffswitch-label" for="marketSwitch">
+                <span class="onoffswitch-inner"></span>
+                <span class="onoffswitch-switch"></span>
+            </label>
+        </div>
+        <input id="runGlobalMatching" type="button" value="Run Global Matching">
+    </div>
+
+    <div id="regenCaches" class="adminSection">
+        <h4>Caches</h4>
+        <div>
+            <label for="regenMpId">MPID: </label>
+            <input type="number" step="1" min="1" id="regenMpId" value="{currentMpId}">
+        </div>
+
+        <input id="regenAttributeCaches" type="button" value="Regenerate Caches">
+        <hr>
+        <input id="runDependencyRegeneration" type="button" value="Regenerate Dependencies">
+    </div>
+</div>
+
+<div>
+    <div id="databaseBox" class="adminSection">
+        <h2>Database</h2>
+        <div class="databaseSubBox">
+            <label for="inventoryId">Inventory ID: </label>
+            <input type="number" id="inventoryId">
+            <input type="button" id="deleteInv" value="DELETE INVENTORY">
+        </div>
+        <div class="databaseSeparator"/>
+        <div class="databaseSubBox">
+            <label for="mpDDContainer">MP: </label>
+            <div id="mpDDContainer" />
+            <input type="button" id="deleteMp" value="DELETE" title="Delete all MP data">
+            <input type="button" id="clearMp" value="CLEAR" title="Clear publisher data">
+        </div>
+        <div class="databaseSeparator"/>
+        <div class="databaseSubBox">
+            <h3>Big Red Nuclear Button</h3>
+            <input type="button" id="wipeDatabase" value="WIPE ALL USER DATA">
+        </div>
+    </div>
+</div>

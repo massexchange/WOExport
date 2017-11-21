@@ -1,0 +1,23 @@
+<h1> For internal use ONLY </h1>
+
+<div id="taskDropdown"></div>
+
+<div id="cancel" class="adminSection">
+    <input type="button" value="Cancel Task">
+</div>
+
+<div id="process" class="adminSection">
+    <input type="button" value="Process Task">
+</div>
+
+<div id="exportToFile" class="adminSection">
+    <input type="button" value="Export Task to File">
+</div>
+
+<div id="exportRaw" class="adminSection">
+    <input type="button" value="Export Raw Data">
+</div>
+
+<div id="taskTable"></div>
+
+<div id="pageNav"></div>

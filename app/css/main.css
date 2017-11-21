@@ -1,0 +1,108 @@
+#wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+#content {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    height: 100%;
+    z-index: 1;
+}
+
+#content-column {
+    position: relative;
+    height: 100%;
+}
+
+#title select, #title div {
+    display: inline-block;
+    font-size: 18pt;
+}
+
+#help {
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+a#help {
+    color: #4C4C4C;
+}
+
+a#help:hover {
+    color: #F39000;
+}
+
+#help .fa-lg {
+    font-size: 1.6em;
+}
+
+.content-columns {
+    clear: both;
+}
+
+.content-column {
+    width: 100%;
+}
+
+.half-width {
+    width: 49%;
+}
+
+.row {
+    width: 100%;
+    clear: both;
+    height: auto;
+    padding: 10px;
+    padding-bottom: 0px;
+    min-height: 46px;
+    text-align: center;
+}
+
+.sub-row {
+    clear: both;
+    height: 25px;
+}
+
+.content-columns input[type="text"] {
+    width: 100%;
+}
+
+.content-columns .formInput {
+    width: 70%;
+}
+
+.content {
+    overflow: hidden;
+}
+
+.gray {
+    border-top: 2px solid #424242;
+}
+
+.orange {
+    border-top: 2px #F49007 solid;
+}
+
+.green {
+    border-top: 2px #9DBB59 solid;
+}
+
+.pageHeader {
+    max-width: 50%;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.selectedRow {
+    background-color: #F49007 !important;
+    color: #FFFFFF;
+}
+
+#saveButton {
+    display:inline;
+    float:right;
+    margin-top: 28px;
+}

@@ -1,0 +1,4 @@
+<div>
+    {data.child.name}
+</div>
+<input type="button" class="delete" value="remove"/>

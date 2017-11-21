@@ -1,0 +1,26 @@
+<div id="title">
+    <h1>CATALOG VIEWER</h1>
+    <a href="#" id="help">
+        <i class="fa fa-question-circle fa-lg"></i>
+    </a>
+</div>
+<div id="catalog">
+    <div id="catalogFilters" class="find-records left sidebar">
+        <div id="queryContainer"/>
+
+        <div id="catalogFilterControls">
+            <input id="find" type="submit" value="FIND RECORDS" class="hidden"/>
+            <input id="export" type="submit" value="EXPORT" class="hidden"/>
+        </div>
+    </div>
+    <div id="catalogResults" class="right">
+        <div id="msg"></div>
+        <div id="results" class="center"/>
+        <div id="pageNav" class="center"/>
+        <div id="pageControls">
+            <div id="dialogMsg" class="center"/>
+            <input id="network" type="submit" value="NETWORK OFFER" class="hidden left"/>
+            <input id="sell" type="submit" value="SALE OFFER" class="hidden right"/>
+        </div>
+    </div>
+</div>

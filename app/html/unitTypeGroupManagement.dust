@@ -1,0 +1,12 @@
+<div id="titleBar">
+	<div id="titleInfo">
+		<h1>UnitTypeGroup Manager</h1>
+    	<a href="#" id="help">
+        	<i class="fa fa-question-circle fa-lg"></i>
+    	</a>
+    </div>
+
+    <input type="button" id="new" value="NEW"/>
+</div>
+<div id="unitTypeGroupTable"></div>
+<div id="response"></div>

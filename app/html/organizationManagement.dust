@@ -1,0 +1,15 @@
+<div id="title">
+    <h1>Organizations</h1>
+    <a href="#" id="help">
+        <i class="fa fa-question-circle fa-lg"></i>
+    </a>
+</div>
+<h2>Active</h2>
+<div id="activeTable">
+</div>
+
+<h2>Inactive</h2>
+<div id="inactiveTable">
+</div>
+<br />
+<input type="button" id="create" value="Create new Organization"/>

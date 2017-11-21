@@ -1,0 +1,96 @@
+#title h1 {
+    text-transform: uppercase;
+}
+
+.section {
+    background: #424242;
+    padding: 10px;
+    color: #fff;
+    position: relative;
+    height: 40px;
+    margin-top: 5px;
+}
+
+.section input {
+    position: absolute;
+    top: 7px;
+    right: 5px;
+}
+
+.invalid {
+    border: 3px solid #e86868;
+}
+
+#sectionDropdownDiv select {
+    margin-top: 10px;
+}
+
+#primaryCardTableDiv th {
+    padding: 0 7px 0 7px;
+}
+
+#primaryCardTableDiv td:first-child {
+    padding: 0 0 0 5px;
+}
+
+td input {
+    display: inline;
+}
+
+td input[type="number"] {
+    margin: 9px auto;
+    padding: 1px 5px;
+    width: 70px;
+}
+
+#primaryCardTableDiv td input[type="button"] {
+    margin-top: 10px;
+}
+
+#primaryCardTableDiv tbody tr.row:last-child {
+  background-color: #4c4c4c;
+  color: white;
+}
+
+#primaryCardTableDiv tbody tr.row:last-child input.priceInput {
+  color: #414141;
+}
+
+#btnNewSection,
+#btnSave,
+#responseMsg {
+    margin-top: 10px;
+}
+
+.rcedit.inlineDelete {
+    background-color: #f49007;
+    color: #000000;
+    height: 14px;
+    padding: 3px 6px 0px 5px;
+    font-size: 10px;
+    transition: background 0.3s ease 0s, color 0.3s ease 0s;
+}
+
+.rcedit.inlineDelete:hover {
+    background-color: #f4be78;
+    transition: background 0.3s ease 0s, color 0.3s ease 0s;
+}
+
+#buttonBar, #title {
+    display: flex;
+}
+
+#title {
+    justify-content: space-between;
+    align-items: center;
+}
+
+input#save, input#editButton {
+    display: inline;
+}
+
+#buttonBar input {
+    display: inline;
+    margin-top: 0px;
+    margin-left: 10px;
+}

@@ -1,0 +1,14 @@
+<h3>GRAPH CONTROLS</h3>
+<div id="sliderControls">
+    <div id="sliders"></div>
+    <div id="chartContainer">
+        <label for="adSizeDD">Ad Size:</label>
+        <div id="adSizeDD"></div>
+        <div id="chart"></div>
+    </div>
+</div>
+<h3>PRICING SCHEME SLIDERS</h3>
+<div id="exclusions"></div>
+<div id="revenue-buttons" class="row clearfix">
+    <div id="message"></div>
+</div>

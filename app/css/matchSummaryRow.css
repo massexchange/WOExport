@@ -1,0 +1,13 @@
+.campaignInfo {
+    margin-bottom: 10px;
+}
+
+.campaignInfoText {
+    display: inline;
+}
+
+.fieldVal {
+    margin-left: 5px;
+    margin-right: 20px;
+    font-size: 18px;
+}

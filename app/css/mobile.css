@@ -1,0 +1,28 @@
+@media only screen and (max-width: 1024px) {
+	#content-column {
+		width: 877px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	#catalog-viewer-nav,
+	#sticky-header {
+		width: 1009px;
+	}
+
+	.find-records {
+		width: 1009px;
+	}
+}
+
+@media only screen and (min-width: 1400px) {
+	#content-column {
+		width: 1187px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	#catalog-viewer-nav {
+		width: 1385px;
+	}
+}

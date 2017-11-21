@@ -1,0 +1,49 @@
+#marketsColumn {
+    width: 48%;
+    display: inline-block;
+}
+
+#mpsColumn {
+    width: 48%;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 3%;
+}
+
+td {
+	max-width: 500px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#mpsDropdownContainer select {
+	max-width: 250px;
+}
+
+#marketsTable .row {
+	cursor: pointer;
+}
+
+#newMarketContainer,
+#newMpContainer {
+	margin-top: 10px;
+}
+
+#marketsInputControls input {
+	margin-top: 10px;
+	width: 150px;
+}
+
+#newMarketNameInput {
+	width: 50%;
+	display: inline;
+}
+
+#addNewMarket {
+	display: inline;
+	margin-left: 10px;
+}
+
+#newMpContainer input {
+	display: inline;
+}

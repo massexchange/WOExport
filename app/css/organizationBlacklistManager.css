@@ -1,0 +1,21 @@
+.centerContent {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.block {
+    margin: 0 auto;
+    display: inline-block;
+}
+
+td input {
+	display: inline;
+}
+
+#msg {
+	margin-top: 10px;
+}
+
+#save {
+	margin-left:auto;
+}

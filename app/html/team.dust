@@ -1,0 +1,26 @@
+<div>
+    <div id="title">
+        <h1 class="inline">
+            <span id="headerTitle">TEAM: </span>
+            <div id="teamDropdownContainer" class="inline">
+            </div>
+        </h1>
+        <a href="#" id="help">
+            <i class="fa fa-question-circle fa-lg"></i>
+        </a>
+        <input type="button" id="deleteButton" class="hidden" value="delete"/>
+        <input type="button" id="saveButton" class="hidden" value="save"/>
+    </div>
+</div>
+<div id="teamManagementContainer" class="hidden">
+    <div id="teamInfoContainer" class="content">
+        <span class="inline">Name: </span>
+        <input id="teamName" type="text" class="inline"/>
+    </div>
+
+    <h2 class="content">ORGANIZATION USERS</h2>
+    <div id="membersTableContainer" class="content"></div>
+    <div class="content" id="controls">
+        <div id="response" class="error"></div>
+    </div>
+</div>

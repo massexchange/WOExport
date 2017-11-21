@@ -1,0 +1,76 @@
+#body, #nameContainer, #addBar, #tableBar, #infoBar{
+	display: flex;
+	flex-flow: row nowrap;
+}
+
+#nameContainer, #addBar, #tableBar{
+	align-items: center;
+}
+
+#tableBar{
+	justify-content: space-between;
+	width: 100%;
+}
+
+#infoLabels, #infoFields, #memberInfoContainer{
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	margin: 10px;
+}
+
+#infoBar{
+	align-items: flex-start;
+	background-color: #F4F4F4;
+	flex: 0 0 auto;
+}
+
+#infoLabels > div, #infoFields > span{
+	align-self: flex-start;
+	margin: 10px 0px 10px 0px;
+}
+
+div#nameLabel{
+	margin: 15px 0px 15px 0px;
+}
+
+#marketName{
+	margin-top: 10px;
+}
+
+#memberTable {
+	width: 100%;
+}
+
+#memberInfoContainer{
+	flex: 1 1 auto;
+}
+
+#addBar{
+	align-self: flex-start;
+	vertical-align: center;
+}
+
+#MPLabel{
+	margin: 0px 5px 0px 0px;
+}
+
+#MPDD{
+	margin: 0px 10px 0px 0px;
+}
+
+#deactivateButton{
+    display:inline;
+    float:right;
+    margin: 28px 5px 0px 0px;
+}
+
+#marketDD{
+	display: inline-block;
+	margin: 5px;
+}
+
+#response{
+	width: 100%;
+	text-align: center;
+}

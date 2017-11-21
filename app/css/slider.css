@@ -1,0 +1,13 @@
+.minText {
+    position: absolute;
+    left: 10px;
+}
+
+.maxText {
+    position: absolute;
+    right: 10px;
+}
+
+#response {
+	margin-top: 10px;
+}

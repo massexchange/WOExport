@@ -1,0 +1,10 @@
+<table class="table table-striped">
+    <tbody>
+        <tr class="row">
+            <td>{>"number" data=dynAmount /}</td>
+        </tr>
+        <tr class="row">
+            <td>{>"number" data=staticAmount /}</td>
+        </tr>
+    </tbody>
+</table>

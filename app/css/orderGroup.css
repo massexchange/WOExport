@@ -1,0 +1,86 @@
+#attrSelectorContainer {
+    width: 15%;
+    overflow-y: auto;
+    height: 75%;
+    z-index: 101;
+    min-width: 237px;
+    max-width: 325px;
+}
+
+#marketsContainer {
+    background: #F4F4F4;
+}
+
+#marketsDropdown select {
+    max-width: 150px;
+}
+
+#orderGroup label {
+    margin: 0;
+}
+
+#orderGroup .gray {
+    padding: 0px 10px 0px 10px;
+}
+
+#orderGroup .gray select{
+    margin: 1em 0px 1em 0px;
+}
+
+#orderGroupParams{
+    width: 75%;
+    margin-left: 10px;
+}
+
+#dateRange input{
+    width: 173px;
+}
+
+#dateRange .left {
+    text-align: initial;
+}
+
+#orderGroupControls,
+#orderGroupControls input[type="button"] {
+    margin-top: 10px;
+    margin-left: 10px;
+    float: right;
+}
+
+#orderGroupParams input[type="number"],
+#orderGroupParams input[type="date"] {
+    outline-color: rgb(244, 144, 7);
+    background: #D6D6D6;
+    border: 0;
+    margin-left: 8px;
+    margin-bottom: 10px;
+    font-family: 'ITCFranklinGothicStd-Book';
+    font-size: 14px;
+    font-weight: 500;
+    padding: 7px 5px 2px 10px;
+    height: 26px;
+    float: right;
+}
+
+#results{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.row:nth-child(even) {
+    background: #F4F4F4;
+}
+
+#submitButton {
+    display:inline;
+    float:right;
+    margin-top: 28px;
+    margin-left: 10px;
+}
+
+#orderGroup {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-flow: row;
+    justify-content: space-between;
+}
