@@ -13,6 +13,7 @@ const Networks = require("./networks");
 const argDefs = [
     { name: "auth", alias: "a", type: String },
     { name: "match", alias: "m", type: String },
+    { name: "dealName", alias: "d", type: String },
     { name: "advertiserName", alias: "n", type: String }
 ];
 const options = cmdArgs(argDefs);
@@ -27,6 +28,8 @@ if(!options.match)
     console.log("Please enter Match id(s) to export");
     process.exit(1);   
 }
+if(!options.dealName)
+    console.log("Deal name not found. Defaulting to Campaign name");
 if(!options.advertiserName)
     console.log("Advertiser not found. Defaulting to placeholder.");
 
@@ -89,7 +92,8 @@ const processResponse = (resp) => {
     const hour = ambiguatedSellShardAttrs.find((attr) => attr.type.name == "Hour");
 
     const extras = {};
-    extras.advertiser = options.advertiserName;
+    extras.dealName = options.dealName ? options.dealName : this.data.campaign.name;
+    extras.advertiser = options.advertiserName ? options.advertiserName : "!PLACEHOLDER!";
     extras.adSize = adSize;
     extras.firstMonday = moment(data.match.buy.flightDate).weekday(1).format("MM/DD/YYYY");
     extras.headerTotalAmount = util.roundToTwoDecimals(data.match.amount * data.match.matchedAparPrice);
@@ -117,7 +121,7 @@ const processResponse = (resp) => {
     //Network (Property) mapping
     const networkName = sellShardAttrs.find((attr) => attr.type.name == "Network").value;
     const network = Networks[networkName];
-    extras.networkName = networkName;
+    extras.networkName = networkName == "SUND" ? "SUN" : networkName; //temporary hardcode because name weirdness
     extras.sellingName = network.getSellingName(unambiguatedDayPart.value);
     extras.rateCard = network.rateCard;
     extras.inventoryDesc = network.inventoryDesc;
@@ -134,16 +138,18 @@ const combineGroups = (group, agencyMap) => {
     //Combine data into one
     for(let i = 1; i < matchData.length; i++)
     {
-        let match = matchData[i];
-        base.Header.TotalAmount += match.Header.TotalAmount;
-        base.Header.TotalEQUnits += match.Header.TotalEQUnits;
+        let xmlData = matchData[i];
+        base.Header.TotalAmount += xmlData.Header.TotalAmount;
+        base.Header.TotalEQUnits += xmlData.Header.TotalEQUnits;
         base.Quarters.Line.UnitCount++;
 
-        base.Guarantees.Guarantee.TotalAmount += match.Guarantees.Guarantee.TotalAmount
+        base.Guarantees.Guarantee.TotalAmount += xmlData.Guarantees.Guarantee.TotalAmount
 
-        base.addWeekday(match.Quarters.Line.Weekdays);
+        base.addWeekday(xmlData.Quarters.Line.Weekdays);
 
-        base.Quarters.Weeks = base.Quarters.Weeks.concat(match.Quarters.Weeks);
+        base.Quarters.Weeks = base.Quarters.Weeks.concat(xmlData.Quarters.Weeks);
+
+        base.Header.Advertiser.ExternalID += `,${xmlData.Header.Advertiser.ExternalID}`;
     }
 
     base.Header.TotalAmount = base.Header.TotalAmount.toFixed(2);
