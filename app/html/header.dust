@@ -1,9 +1,0 @@
-<div id="header-upper">
-    <div id="nav-logo">
-        <a href="/"><img src="/static/app/img/logo.svg"></a>
-    </div>
-    <div id="nav-right-side"></div>
-</div>
-<div id="header-lower">
-    <nav id="nav-container" class="dropdownMenu"></nav>
-</div>

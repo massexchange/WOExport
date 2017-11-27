@@ -1,4 +1,0 @@
-<div>
-    <div class="table"></div>
-    <input type="button" id="hideToggle" value="See More" hidden/>
-</div>

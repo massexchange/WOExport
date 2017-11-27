@@ -1,9 +1,0 @@
-<h1>Planner > Admin</h1>
-
-<div id="result"></div>
-
-<div id="adminSections">
-    <div id="reports" class="adminSection"></div>
-
-    <div id="metricTypes" class="adminSection"></div>
-</div>

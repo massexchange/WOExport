@@ -1,2 +1,0 @@
-<h3>{type.longName} | <span class="daysToFlight">{day}</span> days to flight</h3>
-<div class="sliderContainer"></div>

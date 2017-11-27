@@ -1,7 +1,0 @@
-<div class="attrBar clearfix">
-    <div class="attributes" />
-    <div class="editContainer hidden">
-        <input type="button" value="Edit" />
-    </div>
-</div>
-<div class="orderTable"> 

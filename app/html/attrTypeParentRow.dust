@@ -1,4 +1,0 @@
-<div>
-    {data.parent.name}
-</div>
-<input type="button" class="delete" value="remove"/>

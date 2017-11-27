@@ -1,7 +1,0 @@
-<span id="{type.shortName}" class="typeSpan">Inventory type: {type.longName} </span>
-
-<div class="singleControl">
-    <span id="fixedAmount" class="{type.shortName} level"></span>
-    <div id="fixedSlider" class="level"></div>
-    <span id="variableAmount" class="{type.shortName} level"></span>
-</div>

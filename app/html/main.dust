@@ -1,4 +1,14 @@
-<div id="header"></div>
-<div id="content">
-    <div id="content-column"></div>
+<div id="sideBar"></div>
+<div id="rightColumn">
+    <div id="topBar"></div>
+    <div id="content">
+        <div id="addContainer">
+            <input type="number" placeholder="Match ID" id="matchIdInput">
+            <input type="button" id="matchIdAdd" value="ADD">
+        </div>
+        <div id="matches">
+            <div id="selectedMatches">
+            </div>
+        </div>
+    </div>
 </div>

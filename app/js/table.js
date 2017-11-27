@@ -21,10 +21,8 @@ function($, util, Renderer) {
             this.container = container;
             this.columns = columns;
 
-            this.options = {
-                floatHeader: false,
-                ...options
-            };
+            this.options = options;
+            this.options.floatHeader = false;
         }
         renderRow(rowFunc) {
             return async rowModel => {
