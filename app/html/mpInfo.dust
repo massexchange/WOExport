@@ -1,3 +1,0 @@
-<div id="mpId"> <h4>Current MP ID: </h4> <span>{id}</span> </div>
-<div id="mpName"> <h4>Current MP: </h4> <span>{name}</span> </div>
-<div id="role"> <h4>Current Role: </h4> <span>{role}</span> </div>

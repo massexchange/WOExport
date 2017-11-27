@@ -1,8 +1,0 @@
-<div class="vex-dialog-form">
-    <div class="vex-dialog-message"></div>
-    <div class="vex-dialog-input"></div>
-    <div class="vex-dialog-buttons">
-        <button type="submit" class="vex-dialog-button-primary vex-dialog-button vex-first">SUBMIT</button>
-        <button type="button" class="vex-dialog-button-secondary vex-dialog-button vex-last">Cancel</button>
-    </div>
-</div>

@@ -1,5 +1,0 @@
-<h2>Metric Types</h2>
-
-<div id="metricList"></div>
-
-<input id="saveMetrics" type="button" value="Save">

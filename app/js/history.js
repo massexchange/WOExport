@@ -10,7 +10,7 @@ function(util, Renderer, moment, Table) {
 
         var mpId = MX.session.creds.user.mp.id;
         var mpRole = MX.session.creds.user.mp.role;
-        
+
         var columns = [
             {
                 name: "Counterparty",

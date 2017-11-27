@@ -1,8 +1,6 @@
-define(["require", "jquery", "app/util", "app/hub", "app/router", "json!app/modules.json",
-    "app/session", "app/permissionEvaluator", "Rx", "app/util/promise", "app/consoleAppender", "moment", "app/util/strings", "app/noty"],
-function(require, $, util, hub, Router, modules, Session, permEval, Rx, PromiseUtil, ConsoleAppender, Moment, Strings, Noty) {
+define(["require", "jquery", "app/util", "app/hub", "app/session", "Rx", "app/util/promise", "app/consoleAppender", "moment", "app/util/strings", "app/noty"],
+function(require, $, util, hub, Session, Rx, PromiseUtil, ConsoleAppender, Moment, Strings, Noty) {
     window.MX = {
-        modules: modules,
         session: Session,
         strings: Strings,
         message: Strings.store.MX,
@@ -50,4 +48,6 @@ function(require, $, util, hub, Router, modules, Session, permEval, Rx, PromiseU
 
     Session.get()
         .then(renderMain);
+        
+        renderMain();
 });

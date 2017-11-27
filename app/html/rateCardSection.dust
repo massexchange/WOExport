@@ -1,9 +1,0 @@
-<div class="section clearfix">
-    <span class="left">{data.section.value}</span>
-    <input id="{data.section.id}" class="right hidden" type="button" value="DELETE"></input>
-</div>
-<div id="unitTypeDD" class="rcedit hidden"/>
-<input id="btnAddUnitType" type="button" class="rcedit hidden" value="ADD ROW"/>
-<div id="adSizeDD" class="rcedit hidden"/>
-<input id="btnAddAdSize" type="button" class="rcedit hidden" value="ADD COLUMN"/>
-<div id="sectionTable"></div>

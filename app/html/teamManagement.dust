@@ -1,8 +1,0 @@
-<div id="title">
-    <h1>TEAM MANAGMENT</h1>
-    <a href="#" id="help">
-        <i class="fa fa-question-circle fa-lg"></i>
-    </a>
-    <input type="button" id="saveButton" class="hidden" value="new"/>
-</div>
-<div id="teamTable"></div>
