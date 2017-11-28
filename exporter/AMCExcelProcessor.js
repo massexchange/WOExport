@@ -25,9 +25,16 @@ var sheetToArray = (sheet) => {
 };
 
 exports.initAgencyMap = () => {
-    var workbook = XLSX.readFile("AMC Master List.xlsx");
-    var agencies = sheetToArray(workbook.Sheets["Agency"]);
-    var agencyIdMap = {};
+    const workingDir = `${require("path").dirname(require.main.filename)}`;
+    var workbook;
+    try {
+        workbook = XLSX.readFile(`${workingDir}/exporter/AMC Master List.xlsx`);
+    }
+    catch(err) {
+        workbook = XLSX.readFile(`${workingDir}/AMC Master List.xlsx`);
+    }
+    const agencies = sheetToArray(workbook.Sheets["Agency"]);
+    const agencyIdMap = {};
     agencies.forEach((agency) => {
         var agencyName;
         var agencyExternalId;

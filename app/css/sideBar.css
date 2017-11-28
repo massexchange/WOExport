@@ -10,3 +10,15 @@
 #sideLogo {
     text-align: center;
 }
+
+#nameFields {
+    padding: 10px;
+}
+
+#nameFields label {
+    font-weight: bold;
+}
+
+#nameFields input[type=text] {
+    width: 100%;
+}
