@@ -67,16 +67,16 @@ exports.roundToTwoDecimals = (number) => parseInt(number).toFixed(2);
 //in milliseconds
 exports.getRestrictions = (restrictions) => {
     var getDaypartRestrictions = (dayPart) => {
-        if(dayPart.value == "Daytime")  //Hours 6-14
-            return { start: 21600000, end: 50400000};
-        else if(dayPart.value == "Early Fringe") //Hours 14-17
-            return { start: 50400000, end: 61200000};
-        else if(dayPart.value == "Prime") //Hours 18-24
-            return { start: 64800000, end: 86400000};
-        else if(dayPart.value == "Late Night") //Hours 1-5
-            return { start: 3600000, end: 18000000};
-        else if(dayPart.value == "Weekend") //Hours 6-17 
-            return { start: 21600000, end: 61200000};
+        if(dayPart.value == "Daytime")  //6 AM - 3 PM
+            return { start: 21600000, end: 54000000};
+        else if(dayPart.value == "Early Fringe") //3 PM - 6 PM
+            return { start: 54000000, end: 64800000};
+        else if(dayPart.value == "Prime") //6 PM - 1 AM
+            return { start: 64800000, end: 3600000};
+        else if(dayPart.value == "Late Night") //1 AM - 6 AM
+            return { start: 3600000, end: 21600000};
+        else if(dayPart.value == "Weekend") //6 AM - 6 PM
+            return { start: 21600000, end: 64800000};
     };
     
     const MILLIS_IN_HOUR = 3600000;
