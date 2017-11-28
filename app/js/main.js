@@ -6,10 +6,12 @@ function($, dal, Renderer, TopBar, SideBar, HistoryGroup, util, Noty) {
     exports.markets = [];
     exports.elements = {};
 
-    const selectedMatchIDs = [];
+    var selectedMatchIDs = [];
 
-    const addMatchId = async () => {
+    const addMatchId = async (e) => {
+        e.preventDefault();
         const id = exports.elements.matchIdInput.val();
+        exports.elements.matchIdInput.val("");
         if(selectedMatchIDs.includes(id))
             return;
 
@@ -50,10 +52,10 @@ function($, dal, Renderer, TopBar, SideBar, HistoryGroup, util, Noty) {
         await TopBar.render($("#topBar"));
 
         exports.elements.matchIdInput = $("#matchIdInput");
-        exports.elements.matchIdAdd = $("#matchIdAdd");
+        exports.elements.addMatchForm = $("#addMatchForm");
         exports.elements.selectedMatches = $("#selectedMatches");
 
-        exports.elements.matchIdAdd.click(addMatchId);
+        exports.elements.addMatchForm.submit(addMatchId);
         $("#export").click(() => {
             Noty.closeAll();
             const dealName = $("#dealName").val();
@@ -64,6 +66,11 @@ function($, dal, Renderer, TopBar, SideBar, HistoryGroup, util, Noty) {
                 return util.displayErrors(errors);
 
             exporter.exportMatches(selectedMatchIDs, MX.session.creds.token, dealName, advName);
+        });
+
+        $("#clear").click(() => {
+            selectedMatchIDs = [];
+            exports.elements.selectedMatches.empty();
         });
     };
 

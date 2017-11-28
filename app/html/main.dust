@@ -3,8 +3,11 @@
     <div id="topBar"></div>
     <div id="content">
         <div id="addContainer">
-            <input type="number" placeholder="Match ID" id="matchIdInput">
-            <input type="button" id="matchIdAdd" value="ADD">
+            <form id="addMatchForm" method="POST">
+                <input type="number" placeholder="Match ID" id="matchIdInput">
+                <input type="submit" id="submitMatch" value="ADD">
+                <input type="button" id="clear" value="CLEAR">
+            </form>
         </div>
         <div id="matches">
             <div id="selectedMatches">
