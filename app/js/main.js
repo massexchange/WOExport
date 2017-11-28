@@ -1,7 +1,7 @@
+const exporter = nodeRequire("electron").remote.require("./exporter/exporter");
 
-
-define(["jquery", "app/dal", "app/renderer", "app/topBar", "app/sideBar", "app/historyGroup", "app/util"],
-function($, dal, Renderer, TopBar, SideBar, HistoryGroup, util) {
+define(["jquery", "app/dal", "app/renderer", "app/topBar", "app/sideBar", "app/historyGroup", "app/util", "app/noty"],
+function($, dal, Renderer, TopBar, SideBar, HistoryGroup, util, Noty) {
     const exports = {};
     exports.markets = [];
     exports.elements = {};
@@ -29,6 +29,18 @@ function($, dal, Renderer, TopBar, SideBar, HistoryGroup, util) {
         exports.markets = mpMarkets;
     };
 
+    const validate = (dealName, advName) => {
+        const errors = [];
+
+        if(dealName == null || dealName.length == "")
+            errors.push("Deal name shouldn't be empty");
+
+        if(advName == null || advName.length == "")
+            errors.push("Advertiser name shouldn't be empty");
+
+        return errors;
+    };
+
     exports.render = async container => {
         const renderer = new Renderer(container);
 
@@ -42,6 +54,17 @@ function($, dal, Renderer, TopBar, SideBar, HistoryGroup, util) {
         exports.elements.selectedMatches = $("#selectedMatches");
 
         exports.elements.matchIdAdd.click(addMatchId);
+        $("#export").click(() => {
+            Noty.closeAll();
+            const dealName = $("#dealName").val();
+            const advName = $("#advertiserName").val();
+
+            const errors = validate(dealName, advName);
+            if(errors.length > 0)
+                return util.displayErrors(errors);
+
+            exporter.exportMatches(selectedMatchIDs, MX.session.creds.token, dealName, advName);
+        });
     };
 
     return exports;

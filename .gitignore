@@ -1,6 +1,8 @@
 *.xlsx
 *.xml
 
+*.zip
+
 # Logs
 logs
 *.log

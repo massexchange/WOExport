@@ -10,39 +10,13 @@ const WOXML = require("./WOXML");
 const AMCExcel = require("./AMCExcelProcessor");
 const Networks = require("./networks");
 
-const argDefs = [
-    { name: "auth", alias: "a", type: String },
-    { name: "match", alias: "m", type: String },
-    { name: "dealName", alias: "d", type: String },
-    { name: "advertiserName", alias: "n", type: String }
-];
-const options = cmdArgs(argDefs);
-
-if(!options.auth)
-{
-    console.log("Please enter an auth token");
-    process.exit(1);
-}
-if(!options.match)
-{
-    console.log("Please enter Match id(s) to export");
-    process.exit(1);   
-}
-if(!options.dealName)
-    console.log("Deal name not found. Defaulting to Campaign name");
-if(!options.advertiserName)
-    console.log("Advertiser not found. Defaulting to placeholder.");
-
-const AUTH_TOKEN = options.auth;
-const MATCH_IDS = options.match.split(",");
-
 process.on("unhandledRejection", (reason, promise) => console.log(reason));
 
-const getMatch = (id) => {
+const getMatch = (id, authToken) => {
     const options = {
         url: `http://localhost/api/match/${id}/export`,
         headers: {
-            "X-Auth-Token": AUTH_TOKEN
+            "X-Auth-Token": authToken
         }
     };
     return new Promise((resolve, reject) => {
@@ -55,8 +29,8 @@ const getMatch = (id) => {
     });
 };
 
-const getMatches = (ids) => {
-    const matchPs = ids.map((id) => getMatch(id));
+const getMatches = (ids, authToken) => {
+    const matchPs = ids.map((id) => getMatch(id, authToken));
 
     return Promise.all(matchPs);
 };
@@ -79,7 +53,7 @@ const groupByProperty = (processedData) => {
     return groupedData;
 };
 
-const processResponse = (resp) => {
+const processResponse = (resp, dealName, advertiserName) => {
     const data = JSOG.parse(resp);
     data.campaign.flightStartDate = moment(data.campaign.flightStartDate).format("MM/DD/YYYY");
     data.campaign.flightEndDate = moment(data.campaign.flightEndDate).format("MM/DD/YYYY");
@@ -92,8 +66,8 @@ const processResponse = (resp) => {
     const hour = ambiguatedSellShardAttrs.find((attr) => attr.type.name == "Hour");
 
     const extras = {};
-    extras.dealName = options.dealName ? options.dealName : this.data.campaign.name;
-    extras.advertiser = options.advertiserName ? options.advertiserName : "!PLACEHOLDER!";
+    extras.dealName = dealName ? dealName : data.campaign.name;
+    extras.advertiser = advertiserName ? advertiserName : "!PLACEHOLDER!";
     extras.adSize = adSize;
     extras.firstMonday = moment(data.match.buy.flightDate).weekday(1).format("MM/DD/YYYY");
     extras.headerTotalAmount = util.roundToTwoDecimals(data.match.amount * data.match.matchedAparPrice);
@@ -158,34 +132,67 @@ const combineGroups = (group, agencyMap) => {
     return base;
 };
 
-getMatches(MATCH_IDS)
-.then((matches) => {
-    const agencyMap = AMCExcel.initAgencyMap();
-    const processedMatches = matches.map((match) => processResponse(match));
-    const groupedMatches = groupByProperty(processedMatches);
+exports.exportMatches = (matchIds, authToken, dealName, advertiserName) => {
+    getMatches(matchIds, authToken)
+    .then((matches) => {
+        const agencyMap = AMCExcel.initAgencyMap();
+        const processedMatches = matches.map((match) => processResponse(match, dealName, advertiserName));
+        const groupedMatches = groupByProperty(processedMatches);
 
-    const combinedGroups = Object.keys(groupedMatches).map((key) => combineGroups(groupedMatches[key], agencyMap));
+        const combinedGroups = Object.keys(groupedMatches).map((key) => combineGroups(groupedMatches[key], agencyMap));
 
-    combinedGroups.forEach((group) => {
-        const writer = builder.streamWriter(fs.createWriteStream(`${group.Header.Property}_matches.xml`));
-        const wideOrbit = new WOXML(group, agencyMap);
+        const writeXml = (group, stream) => {
+            const writer = builder.streamWriter(stream);
+            const wideOrbit = new WOXML(group, agencyMap);
 
-        wideOrbit.buildHeader()
-            .buildFlights()
-            .buildGuarantees()
-            .buildTargets()
-            .buildQuarters();
+            wideOrbit.buildHeader()
+                .buildFlights()
+                .buildGuarantees()
+                .buildTargets()
+                .buildQuarters();
 
-        const xml = wideOrbit.getXML();
-        xml.end(writer);
-    });
+            const xml = wideOrbit.getXML();
+            xml.end(writer);
+        };
 
+        combinedGroups.forEach((group) => {
+            var writeStream = fs.createWriteStream(`exports/${group.Header.Property}_matches.xml`);
+            writeStream.on("error", () => {
+                writeStream = fs.createWriteStream(`../exports/${group.Header.Property}_matches.xml`);
+                writeXml(group, writeStream);
+            });
+            
+            writeXml(group, writeStream);
+        });
+    });  
+}
 
+const args = process.argv.slice(2);
+if(args.length > 1) {
+    const argDefs = [
+        { name: "auth", alias: "a", type: String },
+        { name: "match", alias: "m", type: String },
+        { name: "dealName", alias: "d", type: String },
+        { name: "advertiserName", alias: "n", type: String }
+    ];
+    const options = cmdArgs(argDefs);
 
-    /*
-    const data = processResponse(response);
-    const xml = buildXML(data, AMCExcel.initAgencyMap());
-    //console.log(xml);
-    xml.end(writer);
-    */
-});
+    if(!options.auth)
+    {
+        console.log("Please enter an auth token");
+        process.exit(1);
+    }
+    if(!options.match)
+    {
+        console.log("Please enter Match id(s) to export");
+        process.exit(1);   
+    }
+    if(!options.dealName)
+        console.log("Deal name not found. Defaulting to Campaign name.");
+    if(!options.advertiserName)
+        console.log("Advertiser not found. Defaulting to placeholder.");
+
+    const MATCH_IDS = options.match.split(",");
+
+    exports.exportMatches(MATCH_IDS, options.auth);
+};

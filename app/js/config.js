@@ -3,7 +3,7 @@ window.nodeRequire = require;
 window.require = requirejs;
 delete window.exports;
 delete window.module;
-console.log(process.cwd());
+//console.log(process.cwd());
 require.config({
     baseUrl: process.cwd(),
     paths: {

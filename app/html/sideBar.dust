@@ -1,3 +1,16 @@
 <div id="sideLogo">
-	<img src="app/img/sidebarlogo.png">
+    <img src="app/img/sidebarlogo.png">
+</div>
+<div id="nameFields">
+    <div>
+        <label for="dealName">Deal Name</label>
+        <br />
+        <input type="text" id="dealName">
+    </div>
+    <br />
+    <div>
+        <label for="advertiserName">Advertiser Name</label>
+        <br />
+        <input type="text" id="advertiserName">
+    </div>
 </div>
