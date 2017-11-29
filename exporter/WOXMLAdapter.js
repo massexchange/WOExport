@@ -1,7 +1,7 @@
 var moment = require("moment");
 var util = require("./util");
 
-module.exports = class WOXMLData {
+module.exports = class WOXMLAdapter {
     constructor(data, agencyMap) {
         //Header
         this.Header = {};

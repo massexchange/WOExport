@@ -5,7 +5,7 @@ const moment = require("moment");
 const util = require("./util");
 const cmdArgs = require("command-line-args");
 const JSOG = require("jsog");
-const WOXMLData = require("./WOXMLData");
+const WOXMLAdapter = require("./WOXMLAdapter");
 const WOXML = require("./WOXML");
 const AMCExcel = require("./AMCExcelProcessor");
 const Networks = require("./networks");
@@ -106,7 +106,7 @@ const processResponse = (resp, dealName, advertiserName) => {
 };
 
 const combineGroups = (group, agencyMap) => {
-    const matchData = group.map((match) => new WOXMLData(match, agencyMap));
+    const matchData = group.map((match) => new WOXMLAdapter(match, agencyMap));
     const base = matchData[0];
 
     //Combine data into one
