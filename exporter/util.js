@@ -72,7 +72,7 @@ exports.getRestrictions = (restrictions) => {
         else if(dayPart.value == "Early Fringe") //3 PM - 6 PM
             return { start: 54000000, end: 64800000};
         else if(dayPart.value == "Prime") //6 PM - 1 AM
-            return { start: 64800000, end: 3600000};
+            return { start: 64800000, end: 90000000};
         else if(dayPart.value == "Late Night") //1 AM - 6 AM
             return { start: 3600000, end: 21600000};
         else if(dayPart.value == "Weekend") //6 AM - 6 PM
