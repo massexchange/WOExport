@@ -10,6 +10,9 @@ function($, Renderer, dal, hub, Noty) {
             const username = $("#txtUser").val();
             const password = $("#txtPass").val();
 
+            const selectedHost = $("#hostSelect").val();
+            dal.setHost(selectedHost);
+
             dal.post("session", { username, password }).then(res => {
                 Noty.success(`Welcome, ${res.user.firstName}!`);
                 hub.pub("app/auth/success", res);

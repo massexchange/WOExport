@@ -4,6 +4,10 @@
     <form class="form-signin" id="login-form" method="POST">
         <input type="text" placeholder="Username" id="txtUser" class="login-input">
         <input type="password" placeholder="Password" id="txtPass" class="login-input">
+        <select id="hostSelect">
+        	<option value="http://localhost">localhost</option>
+        	<option value="https://app.massexchange.com">app.massexchange.com</option>
+        </select>
 
         <input id="login-button" type="submit" value="LOGIN">
         <div id="response" class="error"></div>

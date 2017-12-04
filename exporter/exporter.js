@@ -10,11 +10,14 @@ const WOXML = require("./WOXML");
 const AMCExcel = require("./AMCExcelProcessor");
 const Networks = require("./networks");
 
+const LOCALHOST = "http://localhost";
+
 process.on("unhandledRejection", (reason, promise) => console.log(reason));
 
-const getMatch = (id, authToken) => {
+const getMatch = (id, host, authToken) => {
+    const appHost = host ? host : LOCALHOST;
     const options = {
-        url: `http://localhost/api/match/${id}/export`,
+        url: `${appHost}/api/match/${id}/export`,
         headers: {
             "X-Auth-Token": authToken
         }
@@ -29,8 +32,8 @@ const getMatch = (id, authToken) => {
     });
 };
 
-const getMatches = (ids, authToken) => {
-    const matchPs = ids.map((id) => getMatch(id, authToken));
+const getMatches = (ids, host, authToken) => {
+    const matchPs = ids.map((id) => getMatch(id, host, authToken));
 
     return Promise.all(matchPs);
 };
@@ -132,8 +135,9 @@ const combineGroups = (group, agencyMap) => {
     return base;
 };
 
-exports.exportMatches = (matchIds, authToken, dealName, advertiserName) => {
-    getMatches(matchIds, authToken)
+exports.exportMatches = (matchIds, options) => {
+    const { host, auth, dealName, advertiserName } = options;
+    getMatches(matchIds, host, auth)
     .then((matches) => {
         const agencyMap = AMCExcel.initAgencyMap();
         const processedMatches = matches.map((match) => processResponse(match, dealName, advertiserName));
@@ -167,9 +171,11 @@ exports.exportMatches = (matchIds, authToken, dealName, advertiserName) => {
     });  
 }
 
+//For terminal usage
 const args = process.argv.slice(2);
 if(args.length > 1) {
     const argDefs = [
+        { name: "host", alias: "h", type: String },
         { name: "auth", alias: "a", type: String },
         { name: "match", alias: "m", type: String },
         { name: "dealName", alias: "d", type: String },
@@ -187,6 +193,11 @@ if(args.length > 1) {
         console.log("Please enter Match id(s) to export");
         process.exit(1);   
     }
+    if(!options.host)
+    {
+        console.log("Host not found. Defaulting to localhost.");
+        options.host = LOCALHOST;
+    }
     if(!options.dealName)
         console.log("Deal name not found. Defaulting to Campaign name.");
     if(!options.advertiserName)
@@ -194,5 +205,5 @@ if(args.length > 1) {
 
     const MATCH_IDS = options.match.split(",");
 
-    exports.exportMatches(MATCH_IDS, options.auth);
+    exports.exportMatches(MATCH_IDS, options);
 };

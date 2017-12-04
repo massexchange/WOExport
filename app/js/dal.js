@@ -3,11 +3,13 @@ function($, util, JSOG, Noty) {
     const dal = function() { return dal; };
 
     const root = "api";
-    const host = "http://localhost";
+    dal.host = "http://localhost";
+
+    dal.setHost = (host) => dal.host = host;
 
     const call = async (url, type, data, token) => {
         const options = {
-            url: `${host}/${root}/${url}`,
+            url: `${dal.host}/${root}/${url}`,
             type,
             data,
             contentType: "application/json",
