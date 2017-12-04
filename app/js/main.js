@@ -65,7 +65,14 @@ function($, dal, Renderer, TopBar, SideBar, HistoryGroup, util, Noty) {
             if(errors.length > 0)
                 return util.displayErrors(errors);
 
-            exporter.exportMatches(selectedMatchIDs, MX.session.creds.token, dealName, advName);
+            const config = {
+                host: dal.host,
+                auth: MX.session.creds.token,
+                dealName: dealName,
+                advertiserName: advName
+            };
+
+            exporter.exportMatches(selectedMatchIDs, config);
         });
 
         $("#clear").click(() => {
