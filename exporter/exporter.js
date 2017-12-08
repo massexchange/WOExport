@@ -1,7 +1,7 @@
 const fs = require("fs");
 const builder = require("xmlbuilder");
 const request = require("request");
-const moment = require("moment");
+const moment = require("moment-timezone");
 const util = require("./util");
 const cmdArgs = require("command-line-args");
 const JSOG = require("jsog");
@@ -11,6 +11,7 @@ const AMCExcel = require("./AMCExcelProcessor");
 const Networks = require("./networks");
 
 const LOCALHOST = "http://localhost";
+moment.tz.setDefault("UTC");
 
 process.on("unhandledRejection", (reason, promise) => console.log(reason));
 
@@ -58,8 +59,8 @@ const groupByProperty = (processedData) => {
 
 const processResponse = (resp, dealName, advertiserName) => {
     const data = JSOG.parse(resp);
-    data.campaign.flightStartDate = moment(data.campaign.flightStartDate).format("MM/DD/YYYY");
-    data.campaign.flightEndDate = moment(data.campaign.flightEndDate).format("MM/DD/YYYY");
+    data.orderGroup.flightStartDate = moment(data.orderGroup.flightStartDate).format("MM/DD/YYYY");
+    data.orderGroup.flightEndDate = moment(data.orderGroup.flightEndDate).format("MM/DD/YYYY");
 
     const sellShardAttrs = data.match.sell.catRec.shard.inst.attributes;
     const hiddenAttrs = data.match.sell.catRec.shard.hiddenAttrIds;
@@ -101,8 +102,8 @@ const processResponse = (resp, dealName, advertiserName) => {
     extras.networkName = networkName == "SUND" ? "SUN" : networkName; //temporary hardcode because name weirdness
     extras.sellingName = network.getSellingName(unambiguatedDayPart.value);
     extras.rateCard = network.rateCard;
-    extras.inventoryDesc = network.inventoryDesc;
-    
+    extras.inventoryDesc = network.getInventoryDesc(unambiguatedDayPart.value);
+
     data.extras = extras;
 
     return data;
@@ -111,26 +112,49 @@ const processResponse = (resp, dealName, advertiserName) => {
 const combineGroups = (group, agencyMap) => {
     const matchData = group.map((match) => new WOXMLAdapter(match, agencyMap));
     const base = matchData[0];
+    const baseLineElement = base.Quarters.Lines[0];
+    const groupedLines = {};
+    groupedLines[baseLineElement.SellingName] = [baseLineElement];
 
-    //Combine data into one
+    //Combine groups
     for(let i = 1; i < matchData.length; i++)
     {
         let xmlData = matchData[i];
         base.Header.TotalAmount += xmlData.Header.TotalAmount;
         base.Header.TotalEQUnits += xmlData.Header.TotalEQUnits;
-        base.Quarters.Line.UnitCount++;
 
         base.Guarantees.Guarantee.TotalAmount += xmlData.Guarantees.Guarantee.TotalAmount
 
-        base.addWeekday(xmlData.Quarters.Line.Weekdays);
-
-        base.Quarters.Weeks = base.Quarters.Weeks.concat(xmlData.Quarters.Weeks);
-
         base.Header.Advertiser.ExternalID += `,${xmlData.Header.Advertiser.ExternalID}`;
+        
+        //Group lines while combining groups
+        const lineElement = xmlData.Quarters.Lines[0];
+        const lineSellingName = lineElement.SellingName;
+        if(groupedLines[lineSellingName] != null)
+            groupedLines[lineSellingName].push(lineElement);
+        else
+            groupedLines[lineSellingName] = [lineElement];
     }
 
     base.Header.TotalAmount = base.Header.TotalAmount.toFixed(2);
     base.Guarantees.Guarantee.TotalAmount = base.Guarantees.Guarantee.TotalAmount.toFixed(2);
+
+    base.Quarters.Lines = []; //clear this out, base's line stored in groupedLines
+
+    //Combine the grouped Line elements
+    for(var sellingName in groupedLines)
+    {
+        const lines = groupedLines[sellingName];
+        const combinedLine = lines.reduce((result, line) => {
+            result.UnitCount += line.UnitCount;
+            result.Weekdays = util.addWeekday(result.Weekdays, line.Weekdays);
+            result.Weeks = result.Weeks.concat(line.Weeks);
+
+            return result;
+        });
+
+        base.Quarters.Lines.push(combinedLine);
+    }
 
     return base;
 };

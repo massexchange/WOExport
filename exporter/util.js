@@ -94,3 +94,20 @@ exports.getRestrictions = (restrictions) => {
     else
         return { start: 0, end: 24 * MILLIS_IN_HOUR };
 };
+
+exports.addWeekday = (lhs, rhs) => {
+    //Remove "h" from Th to make life simpler
+    var lhs = lhs.replace("h", "");
+    rhs = rhs.replace("h", "");
+    var result = "";
+
+    for(let i = 0; i < 5; i++)
+    {
+        if(i != 3) //Th takes up 2 indices
+            result += lhs[i] == "-" ? rhs[i] : lhs[i];
+        else if(i == 3 && (lhs[i] == "T" || rhs[i] == "T"))
+            result += "Th";
+    }
+    
+    return result;
+};

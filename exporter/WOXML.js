@@ -104,38 +104,41 @@ module.exports = class WOXML {
             .ele("Start", this.data.Quarters.Quarter.Start).up()
             .ele("End", this.data.Quarters.Quarter.End).up();
 
-        var line = quarters.ele("Line")
-            .ele("SellingName", this.data.Quarters.Line.SellingName).up()
-            .ele("InventoryDesc", this.data.Quarters.Line.InventoryDesc).up()
-            .ele("Start", this.data.Quarters.Line.Start).up()
-            .ele("End", this.data.Quarters.Line.End).up()
-            .ele("RateCard", this.data.Quarters.Line.RateCard).up() //like "RateCard" in Header->Advertiser
-            .ele("RatecardRate", this.data.Quarters.Line.RatecardRate).up()         //Excel says "not sure if 0"
-            .ele("PriorityCode", this.data.Quarters.Line.PriorityCode).up()
-            .ele("SellingElement", this.data.Quarters.Line.SellingElement).up()
-            .ele("BreakCode", this.data.Quarters.Line.BreakCode).up()
-            .ele("Length", this.data.Quarters.Line.Length).up()
-            .ele("Rate", this.data.Quarters.Line.Rate).up()
-            .ele("Weekdays", this.data.Quarters.Line.Weekdays).up()
-            .ele("UnitCount", this.data.Quarters.Line.UnitCount).up();
+        //Build line elements with their weeks
+        this.data.Quarters.Lines.forEach((lineData) => {
+            const line = quarters.ele("Line")
+                .ele("SellingName", lineData.SellingName).up()
+                .ele("InventoryDesc", lineData.InventoryDesc).up()
+                .ele("Start", lineData.Start).up()
+                .ele("End", lineData.End).up()
+                .ele("RateCard", lineData.RateCard).up() //like "RateCard" in Header->Advertiser
+                .ele("RatecardRate", lineData.RatecardRate).up()         //Excel says "not sure if 0"
+                .ele("PriorityCode", lineData.PriorityCode).up()
+                .ele("SellingElement", lineData.SellingElement).up()
+                .ele("BreakCode", lineData.BreakCode).up()
+                .ele("Length", lineData.Length).up()
+                .ele("Rate", lineData.Rate).up()
+                .ele("Weekdays", lineData.Weekdays).up()
+                .ele("UnitCount", lineData.UnitCount).up();
 
-        var lineEstimates = line.ele("Estimates")
-            .ele("Estimate")
-            .ele("RatingStream", this.data.Quarters.Estimates.Estimate.RatingStream).up()
-            .ele("Marketbreak", this.data.Quarters.Estimates.Estimate.Marketbreak).up()
-            .ele("Demo", this.data.Quarters.Estimates.Estimate.Demo).up()
-            .ele("Imps", this.data.Quarters.Estimates.Estimate.Imps);
-        
-        var lineWeeks = line.ele("Weeks");
+            var lineEstimates = line.ele("Estimates")
+                .ele("Estimate")
+                .ele("RatingStream", lineData.Estimates.Estimate.RatingStream).up()
+                .ele("Marketbreak", lineData.Estimates.Estimate.Marketbreak).up()
+                .ele("Demo", lineData.Estimates.Estimate.Demo).up()
+                .ele("Imps", lineData.Estimates.Estimate.Imps);
+            
+            var lineWeeks = line.ele("Weeks");
 
-        this.data.Quarters.Weeks.forEach((week) => {
-            lineWeeks.ele("Week")
-            .ele("Start", week.Start).up()
-            //.ele("AdvertiserBrand", "WORK IN PROGRESS. CAMPAIGN'S UPCOMING 'BRAND' FIELD").up()
-            .ele("UnitCount", week.UnitCount).up()
-            .ele("Weekdays", week.Weekdays).up()
-            .ele("RestrictStart", week.RestrictStart).up()
-            .ele("RestrictEnd", week.RestrictEnd);
+            lineData.Weeks.forEach((week) => {
+                lineWeeks.ele("Week")
+                .ele("Start", week.Start).up()
+                //.ele("AdvertiserBrand", "WORK IN PROGRESS. CAMPAIGN'S UPCOMING 'BRAND' FIELD").up()
+                .ele("UnitCount", week.UnitCount).up()
+                .ele("Weekdays", week.Weekdays).up()
+                .ele("RestrictStart", week.RestrictStart).up()
+                .ele("RestrictEnd", week.RestrictEnd);
+            });
         });
 
         return this;

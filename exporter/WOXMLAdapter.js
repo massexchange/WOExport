@@ -64,33 +64,36 @@ module.exports = class WOXMLAdapter {
 
         //Quarters
         this.Quarters = {};
-        this.Quarters.Quarter = {};
+        this.Quarters.Quarter = {}; //Assuming only one quarter for now
         this.Quarters.Quarter.Start = data.extras.quarter.start;
         this.Quarters.Quarter.End = data.extras.quarter.end;
 
-        this.Quarters.Line = {};
-        this.Quarters.Line.SellingName = data.extras.sellingName;
-        this.Quarters.Line.InventoryDesc = data.extras.inventoryDesc;
-        this.Quarters.Line.Start = data.campaign.flightStartDate;
-        this.Quarters.Line.End = data.campaign.flightEndDate;
-        this.Quarters.Line.RateCard = data.extras.rateCard;    //Like "RateCard" in Header->Advertiser
-        this.Quarters.Line.RatecardRate = 0;    //Excel says "not sure if 0"
-        this.Quarters.Line.PriorityCode = "MassEx";
-        this.Quarters.Line.SellingElement = "ME - MassEX";
-        this.Quarters.Line.BreakCode = "National";
-        this.Quarters.Line.Length = data.extras.adSize.value * 1000;
-        this.Quarters.Line.Rate = data.extras.rate;
-        this.Quarters.Line.Weekdays = data.extras.weekdays;
-        this.Quarters.Line.UnitCount = data.match.amount;
+        this.Quarters.Lines = []; //Quarters can have multiple lines for each SellingName
+        const line = {
+            SellingName: data.extras.sellingName,
+            InventoryDesc: data.extras.inventoryDesc,
+            Start: data.orderGroup.flightStartDate,
+            End: data.orderGroup.flightEndDate,
+            RateCard: data.extras.rateCard,
+            RatecardRate: 0,
+            PriorityCode: "MassEx",
+            SellingElement: "ME - MassEX",
+            BreakCode: "National",
+            Length: data.extras.adSize.value * 1000,
+            Rate: data.extras.rate,
+            Weekdays: data.extras.weekdays,
+            UnitCount: data.match.amount
+        };
 
-        this.Quarters.Estimates = {};
-        this.Quarters.Estimates.Estimate = {};
-        this.Quarters.Estimates.Estimate.RatingStream = "C3";
-        this.Quarters.Estimates.Estimate.Marketbreak = "General";
-        this.Quarters.Estimates.Estimate.Demo = "HH";
-        this.Quarters.Estimates.Estimate.Imps = 0;
+        line.Estimates = {};
+        line.Estimates.Estimate = {};
+        line.Estimates.Estimate.RatingStream = "C3";
+        line.Estimates.Estimate.Marketbreak = "General";
+        line.Estimates.Estimate.Demo = "HH";
+        line.Estimates.Estimate.Imps = 0;
 
-        this.Quarters.Weeks = [];
+        //Store the line's weeks, will all be merged later
+        line.Weeks = [];
         const week = {
             Start: data.extras.firstMonday,
             UnitCount: data.match.amount,
@@ -98,24 +101,9 @@ module.exports = class WOXMLAdapter {
             RestrictStart: data.extras.restrictions.start,
             RestrictEnd: data.extras.restrictions.end,
         }
-        this.Quarters.Weeks.push(week);
+        line.Weeks.push(week);
+
+        this.Quarters.Lines.push(line);
     }
-
-    addWeekday(rhs) {
-        //Remove "h" from Th to make life simpler
-        const lhs = this.Quarters.Line.Weekdays.replace("h", "");
-        rhs = rhs.replace("h", "");
-        var result = "";
-
-        for(let i = 0; i < 5; i++)
-        {
-            if(i != 3) //Th takes up 2 indices
-                result += lhs[i] == "-" ? rhs[i] : lhs[i];
-            else if(i == 3 && (lhs[i] == "T" || rhs[i] == "T"))
-                result += "Th";
-        }
-        
-        this.Quarters.Line.Weekdays = result;
-    };
 
 };

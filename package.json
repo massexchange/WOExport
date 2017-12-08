@@ -17,5 +17,8 @@
     "build": "npm run build:osx && npm run build:win",
     "build:osx": "npm run pack:osx && electron-builder \"dist/osx/EA Todo-darwin-x64/EA Todo.app\" --platform=osx --out=\"dist/osx\" --config=builder.json",
     "build:win": "npm run pack:win && electron-builder \"dist/win/EA Todo-win32-ia32\" --platform=win --out=\"dist/win\" --config=builder.json"
+  },
+  "dependencies": {
+    "moment-timezone": "^0.5.14"
   }
 }
