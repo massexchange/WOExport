@@ -1,3 +1,6 @@
 node_modules
 *.xlsx
 *.xml
+
+lib
+exports
