@@ -1,0 +1,7 @@
+<span>
+    {?data}
+        {@formatNumber val=data/}
+    {:else}
+        {!if the info is missing, simply leave the column blank!}
+    {/data}
+</span>

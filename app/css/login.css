@@ -1,0 +1,58 @@
+#login {
+    width: 250px;
+    position: absolute;
+    margin-left: -125px;
+    left: 50%;
+    height: 350px;
+    margin-top: -175px;
+    top: 45%;
+}
+
+#login-logo {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.login-input {
+    width: 100%;
+    background: #F4F4F4;
+    padding: 5px 15px;
+    border: 0px;
+    font-family: 'source_sans_proregular';
+    outline-color: #F39000;
+}
+
+#login-button {
+    width: 100px;
+    color: rgb(0, 0, 0);
+    border-style: none;
+    border-radius: 4px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background-color: #F39000;
+    text-align: center;
+    font-family: 'brandon_grotesque_regularRg';
+    font-weight: 900;
+    padding: 5px 0;
+    outline: none;
+    transition: background 0.3s ease 0s, color 0.3s ease 0s;
+    margin: 10px auto;
+}
+
+#login-button:hover {
+    background-color: #424242;
+    color: #fff;
+    transition: background 0.3s ease 0s, color 0.3s ease 0s;
+}
+
+.category-label {
+    font-family: 'ITCFranklinGothicStd-Demi';
+}
+
+#response {
+    margin-top: 10px;
+}
+
+#hostSelect {
+    width: 100%;
+}

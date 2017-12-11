@@ -1,0 +1,26 @@
+#rightColumn {
+    top: 0px;
+    margin-left: 250px;
+}
+
+#addContainer {
+    margin-top: 10px;
+    text-align: center;
+}
+
+#addContainer input {
+    display: inline;
+    margin-left: 10px;
+}
+
+#matchIdAdd {
+    margin-left: 10px;
+}
+
+#matches {
+    margin-top: 10px;
+}
+
+#selectedMatches {
+    padding: 10px;
+}

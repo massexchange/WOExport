@@ -1,0 +1,17 @@
+<div id="sideBar"></div>
+<div id="rightColumn">
+    <div id="topBar"></div>
+    <div id="content">
+        <div id="addContainer">
+            <form id="addMatchForm" method="POST">
+                <input type="number" placeholder="Match ID" id="matchIdInput">
+                <input type="submit" id="submitMatch" value="ADD">
+                <input type="button" id="clear" value="CLEAR">
+            </form>
+        </div>
+        <div id="matches">
+            <div id="selectedMatches">
+            </div>
+        </div>
+    </div>
+</div>
