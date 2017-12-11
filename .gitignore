@@ -31,3 +31,6 @@ lib
 *.pem
 
 *.sync-conflict-*
+
+*.xlsx
+*.xml
