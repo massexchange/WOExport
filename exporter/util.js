@@ -67,10 +67,10 @@ exports.roundToTwoDecimals = (number) => parseInt(number).toFixed(2);
 //in milliseconds
 exports.getRestrictions = (restrictions) => {
     var getDaypartRestrictions = (dayPart) => {
-        if(dayPart.value == "Daytime")  //6 AM - 3 PM
-            return { start: 21600000, end: 54000000};
-        else if(dayPart.value == "Early Fringe") //3 PM - 6 PM
-            return { start: 54000000, end: 64800000};
+        if(dayPart.value == "Daytime")  //6 AM - 2 PM
+            return { start: 21600000, end: 50400000};
+        else if(dayPart.value == "Early Fringe") //2 PM - 6 PM
+            return { start: 50400000, end: 64800000};
         else if(dayPart.value == "Prime") //6 PM - 1 AM
             return { start: 64800000, end: 90000000};
         else if(dayPart.value == "Late Night") //1 AM - 6 AM
