@@ -107,6 +107,8 @@ exports.addWeekday = (lhs, rhs) => {
             result += lhs[i] == "-" ? rhs[i] : lhs[i];
         else if(i == 3 && (lhs[i] == "T" || rhs[i] == "T"))
             result += "Th";
+        else
+            result += "-";
     }
     
     return result;
