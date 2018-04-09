@@ -81,7 +81,7 @@ const processResponse = (resp, dealName, advertiserName) => {
     extras.weekdays = util.getWeekString(data.match.buy.flightDate);
 
     //Quarter
-    const quarter = util.getQuarter(data.match.buy.flightDate);
+    const quarter = util.getNielsenQuarter(data.match.buy.flightDate);
     quarter.start = quarter.start.format("MM/DD/YYYY");
     quarter.end = quarter.end.format("MM/DD/YYYY");
 

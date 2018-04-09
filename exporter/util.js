@@ -62,6 +62,29 @@ exports.getQuarter = (flightDate) => {
         return {start: QUARTER_FOUR_START, end: QUARTER_FOUR_END};
 };
 
+exports.getNielsenQuarter = (flightDate) => {
+    const QUARTER_ONE_START = moment.utc("2018-01-01");
+    const QUARTER_ONE_END = moment.utc("2018-04-01");
+    const QUARTER_TWO_START = moment.utc("2018-04-02");
+    const QUARTER_TWO_END = moment.utc("2018-07-01");
+    const QUARTER_THREE_START = moment.utc("2018-07-02");
+    const QUARTER_THREE_END = moment.utc("2018-10-01");
+    const QUARTER_FOUR_START = moment.utc("2018-10-02");
+    const QUARTER_FOUR_END = moment.utc("2018-12-31");
+
+    const date = moment.utc(flightDate);
+
+    if(date.isBetween(QUARTER_ONE_START, QUARTER_ONE_END) || date.isSame(QUARTER_ONE_START) || date.isSame(QUARTER_ONE_END))
+        return {start: QUARTER_ONE_START, end: QUARTER_ONE_END};
+    else if(date.isBetween(QUARTER_TWO_START, QUARTER_TWO_END) || date.isSame(QUARTER_TWO_START) || date.isSame(QUARTER_TWO_END))
+        return {start: QUARTER_TWO_START, end: QUARTER_TWO_END};
+    else if(date.isBetween(QUARTER_THREE_START, QUARTER_THREE_END) || date.isSame(QUARTER_THREE_START) || date.isSame(QUARTER_THREE_END))
+        return {start: QUARTER_THREE_START, end: QUARTER_THREE_END};
+    else if(date.isBetween(QUARTER_FOUR_START, QUARTER_FOUR_END) || date.isSame(QUARTER_FOUR_START) || date.isSame(QUARTER_FOUR_END))
+        return {start: QUARTER_FOUR_START, end: QUARTER_FOUR_END};
+};
+
+
 exports.roundToTwoDecimals = (number) => parseInt(number).toFixed(2);
 
 //in milliseconds
