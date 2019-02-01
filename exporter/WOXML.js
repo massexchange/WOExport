@@ -143,4 +143,11 @@ module.exports = class WOXML {
 
         return this;
     }
+
+    buildAdvertiserBrand(advertiserBrand) {
+        this.root.ele("AdvertiserBrand")
+            .ele("Name", advertiserBrand);
+
+        return this;
+    }
 };

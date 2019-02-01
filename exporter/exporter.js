@@ -160,7 +160,7 @@ const combineGroups = (group, agencyMap) => {
 };
 
 exports.exportMatches = (matchIds, options) => {
-    const { host, auth, dealName, advertiserName } = options;
+    const { host, auth, dealName, advertiserName, advertiserBrand } = options;
     getMatches(matchIds, host, auth)
     .then((matches) => {
         const agencyMap = AMCExcel.initAgencyMap();
@@ -177,6 +177,7 @@ exports.exportMatches = (matchIds, options) => {
                 .buildFlights()
                 .buildGuarantees()
                 .buildTargets()
+                .buildAdvertiserBrand(advertiserBrand)
                 .buildQuarters();
 
             const xml = wideOrbit.getXML();
@@ -203,7 +204,8 @@ if(args.length > 1) {
         { name: "auth", alias: "a", type: String },
         { name: "match", alias: "m", type: String },
         { name: "dealName", alias: "d", type: String },
-        { name: "advertiserName", alias: "n", type: String }
+        { name: "advertiserName", alias: "n", type: String },
+        { name: "advertiserBrand", alias: "b", type: String}
     ];
     const options = cmdArgs(argDefs);
 
@@ -226,6 +228,9 @@ if(args.length > 1) {
         console.log("Deal name not found. Defaulting to Campaign name.");
     if(!options.advertiserName)
         console.log("Advertiser not found. Defaulting to placeholder.");
+
+    if(!options.advertiserBrand)
+        console.log("Advertiser Brand missing. Skipping in XML.");
 
     const MATCH_IDS = options.match.split(",");
 

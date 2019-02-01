@@ -13,4 +13,10 @@
         <br />
         <input type="text" id="advertiserName">
     </div>
+    <br />
+    <div>
+        <label for="advertiserBrand">Advertiser Brand</label>
+        <br />
+        <input type="text" id="advertiserBrand">
+    </div>
 </div>

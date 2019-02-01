@@ -60,6 +60,7 @@ function($, dal, Renderer, TopBar, SideBar, HistoryGroup, util, Noty) {
             Noty.closeAll();
             const dealName = $("#dealName").val();
             const advName = $("#advertiserName").val();
+            const advBrand = $("#advertiserBrand").val();
 
             const errors = validate(dealName, advName);
             if(errors.length > 0)
@@ -69,7 +70,8 @@ function($, dal, Renderer, TopBar, SideBar, HistoryGroup, util, Noty) {
                 host: dal.host,
                 auth: MX.session.creds.token,
                 dealName: dealName,
-                advertiserName: advName
+                advertiserName: advName,
+                advertiserBrand: advBrand
             };
 
             exporter.exportMatches(selectedMatchIDs, config);
